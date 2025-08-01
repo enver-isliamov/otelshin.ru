@@ -32,7 +32,7 @@ export default function WhyChooseUsServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left side - Why choose us */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Почему выбирают нас?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Почему выбирают OtelShin?</h2>
             <div className="space-y-4">
               {reasons.map((reason, index) => (
                 <div key={index} className="flex items-start space-x-4">
@@ -51,7 +51,7 @@ export default function WhyChooseUsServices() {
           {/* Right side - Company info + stats */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">О компании CarMan</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">О компании OtelShin</h2>
               <div className="space-y-4 text-gray-600 mb-6">
                 <p className="text-sm md:text-base leading-relaxed">
                   Мы специализируемся на профессиональном хранении шин с 2019 года. За это время мы обслужили более 500

@@ -9,29 +9,38 @@ import MobileBottomNav from "@/components/mobile-bottom-nav"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  title: "CarMan - Профессиональное хранение шин в Симферополе",
+  title: "OtelShin - Профессиональное хранение шин в Симферополе | Тарифы от 500₽/месяц",
   description:
-    "Решаем проблему хранение ваших Шин, Колес, Дисков, Резины, Покрышек. Вывоз шины прямо от дома или офиса на наш счёт.",
-  keywords: "хранение шин, шиномонтаж, Симферополь, сезонное хранение, автосервис, CarMan",
-  authors: [{ name: "CarMan" }],
-  creator: "CarMan",
-  publisher: "CarMan",
+    "Решаем проблему хранения ваших Шин, Колес, Дисков, Резины, Покрышек в Симферополе. Вывоз шин прямо от дома или офиса БЕСПЛАТНО. Климат-контроль 24/7, личный кабинет. ☎️ +7 (978) 070-36-65",
+  keywords:
+    "хранение шин Симферополь, сезонное хранение шин, шиномонтаж Симферополь, автосервис, OtelShin, хранение колес, хранение резины",
+  authors: [{ name: "OtelShin" }],
+  creator: "OtelShin",
+  publisher: "OtelShin",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "CarMan - Профессиональное хранение шин",
-    description: "Современный сервис хранения шин в Симферополе с вывозом на дом",
+    title: "OtelShin - Профессиональное хранение шин в Симферополе",
+    description: "Современный сервис хранения шин в Симферополе с вывозом на дом. Тарифы от 500₽/месяц",
     type: "website",
     locale: "ru_RU",
-    url: "https://carman.ru",
-    siteName: "CarMan",
+    url: "https://otelshin.vercel.app",
+    siteName: "OtelShin",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "OtelShin - хранение шин в Симферополе",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CarMan - Профессиональное хранение шин",
+    title: "OtelShin - Профессиональное хранение шин в Симферополе",
     description: "Современный сервис хранения шин в Симферополе с вывозом на дом",
   },
   robots: {
@@ -49,7 +58,11 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "CarMan",
+    title: "OtelShin",
+  },
+  verification: {
+    google: "your-google-verification-code",
+    yandex: "your-yandex-verification-code",
   },
     generator: 'v0.dev'
 }
@@ -80,10 +93,36 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="CarMan" />
-        <meta name="application-name" content="CarMan" />
+        <meta name="apple-mobile-web-app-title" content="OtelShin" />
+        <meta name="application-name" content="OtelShin" />
         <meta name="msapplication-TileColor" content="#2563eb" />
         <meta name="msapplication-tap-highlight" content="no" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "OtelShin",
+              description: "Профессиональное хранение шин в Симферополе",
+              url: "https://otelshin.vercel.app",
+              telephone: "+79780703665",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Симферополь",
+                addressCountry: "RU",
+              },
+              openingHours: "Mo-Su 09:00-22:00",
+              priceRange: "500-700 RUB",
+              serviceArea: {
+                "@type": "City",
+                name: "Симферополь",
+              },
+            }),
+          }}
+        />
       </head>
       <body className={`${inter.className} pb-16 md:pb-0`}>
         <Header />

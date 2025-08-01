@@ -23,8 +23,8 @@ export default function Header() {
               </div>
             </div>
             <span className="text-xl font-bold">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Car</span>
-              <span className="text-gray-900">Man</span>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Otel</span>
+              <span className="text-gray-900">Shin</span>
             </span>
           </Link>
 

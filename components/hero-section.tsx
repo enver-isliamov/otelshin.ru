@@ -28,8 +28,8 @@ export default function HeroSection() {
           {/* Main Heading */}
           <div className="mb-4">
             <h1 className="text-2xl lg:text-4xl font-bold mb-2 text-gray-900">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Car</span>
-              <span className="text-gray-900">Man</span>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Otel</span>
+              <span className="text-gray-900">Shin</span>
             </h1>
             <div className="w-12 lg:w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
@@ -44,7 +44,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <p className="text-sm lg:text-base mb-6 lg:mb-8 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Вывоз шины прямо от дома или офиса на наш счёт.
+            Вывоз шин прямо от дома или офиса на наш счёт. Удобное хранение и защита вашего транспортного средства.
           </p>
 
           {/* CTA Buttons */}

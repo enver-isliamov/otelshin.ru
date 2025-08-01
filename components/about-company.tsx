@@ -13,7 +13,7 @@ export default function AboutCompany() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">О компании CarMan</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">О компании OtelShin</h2>
             <div className="space-y-4 text-gray-600 mb-8">
               <p className="text-sm md:text-base leading-relaxed">
                 Мы специализируемся на профессиональном хранении шин с 2019 года. За это время мы обслужили более 100

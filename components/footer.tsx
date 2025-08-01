@@ -20,8 +20,8 @@ export default function Footer() {
                 </div>
               </div>
               <span className="text-xl font-bold">
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Car</span>
-                <span className="text-white">Man</span>
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Otel</span>
+                <span className="text-white">Shin</span>
               </span>
             </div>
             <p className="text-gray-400 mb-4">
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 CarMan. Все права защищены.</p>
+          <p>&copy; 2024 OtelShin. Все права защищены.</p>
         </div>
       </div>
 

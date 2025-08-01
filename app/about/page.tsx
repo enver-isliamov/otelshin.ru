@@ -3,8 +3,41 @@ import { Users, Award, Shield, Clock, Phone, MessageCircle, Eye, Thermometer } f
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "О нас - CarMan",
-  description: "Узнайте больше о нашей компании, команде и преимуществах хранения шин в Симферополе",
+  title: "О компании OtelShin - Хранение шин в Симферополе | 5+ лет опыта, 100+ клиентов",
+  description:
+    "Узнайте больше о компании OtelShin - лидере в сфере хранения шин в Симферополе. 5+ лет опыта, современные технологии, 100+ довольных клиентов. Климат-контроль 24/7.",
+  keywords:
+    "OtelShin о компании, хранение шин Симферополь история, профессиональное хранение шин, команда OtelShin, опыт хранения шин",
+  authors: [{ name: "OtelShin" }],
+  creator: "OtelShin",
+  publisher: "OtelShin",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "О компании OtelShin - Лидер хранения шин в Симферополе",
+    description: "5+ лет опыта, современные технологии, 100+ довольных клиентов. Узнайте историю успеха OtelShin",
+    type: "website",
+    locale: "ru_RU",
+    siteName: "OtelShin",
+    images: [
+      {
+        url: "/og-about.jpg",
+        width: 1200,
+        height: 630,
+        alt: "О компании OtelShin - хранение шин",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "О компании OtelShin - Лидер хранения шин в Симферополе",
+    description: "5+ лет опыта, современные технологии, 100+ довольных клиентов",
+  },
+  alternates: {
+    canonical: "https://otelshin.vercel.app/about",
+  },
 }
 
 export default function AboutPage() {
@@ -52,7 +85,7 @@ export default function AboutPage() {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-12 lg:mb-16">
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">О компании CarMan</h1>
+          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">О компании OtelShin</h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Мы создали современный сервис хранения шин в Симферополе, который объединяет профессиональный подход,
             передовые технологии и заботу о каждом клиенте
@@ -78,10 +111,10 @@ export default function AboutPage() {
         {/* Company Story */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
           <div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">Наша история</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">История компании OtelShin</h2>
             <div className="space-y-4 text-gray-600">
               <p className="text-sm lg:text-base leading-relaxed">
-                CarMan был основан в 2019 году с целью решить проблему сезонного хранения шин для автовладельцев
+                OtelShin был основан в 2019 году с целью решить проблему сезонного хранения шин для автовладельцев
                 Симферополя. Мы понимали, что многие сталкиваются с нехваткой места для хранения сменного комплекта шин.
               </p>
               <p className="text-sm lg:text-base leading-relaxed">
@@ -91,16 +124,16 @@ export default function AboutPage() {
               </p>
               <p className="text-sm lg:text-base leading-relaxed">
                 Сегодня нам доверяют более 100 клиентов, и мы продолжаем развиваться, внедряя новые технологии и
-                расширяя спектр услуг.
+                расширяя спектр услуг по хранению шин в Симферополе.
               </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 lg:p-8">
-            <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">Наша миссия</h3>
+            <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">Миссия OtelShin</h3>
             <p className="text-gray-600 mb-6 text-sm lg:text-base leading-relaxed">
-              Обеспечить каждому автовладельцу удобное, безопасное и доступное решение для хранения шин, используя
-              современные технологии и индивидуальный подход к каждому клиенту.
+              Обеспечить каждому автовладельцу в Симферополе удобное, безопасное и доступное решение для хранения шин,
+              используя современные технологии и индивидуальный подход к каждому клиенту.
             </p>
             <div className="bg-white rounded-lg p-4">
               <h4 className="font-semibold text-gray-900 mb-2">Что нас отличает:</h4>
@@ -117,8 +150,8 @@ export default function AboutPage() {
         {/* Advantages */}
         <div className="mb-16">
           <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Наши преимущества</h2>
-            <p className="text-lg text-gray-600">Почему более 100 клиентов выбрали CarMan для хранения своих шин</p>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Преимущества OtelShin</h2>
+            <p className="text-lg text-gray-600">Почему более 100 клиентов выбрали OtelShin для хранения своих шин</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -143,9 +176,9 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 lg:p-12 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Хотите узнать больше?</h2>
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Хотите узнать больше о OtelShin?</h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Свяжитесь с нами для получения подробной консультации о наших услугах и условиях хранения
+            Свяжитесь с нами для получения подробной консультации о наших услугах и условиях хранения шин в Симферополе
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -2,11 +2,11 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { X, Phone, MessageCircle } from "lucide-react"
+import { X, Phone, MessageCircle, CheckCircle, AlertTriangle, Sparkles } from "lucide-react"
 
 interface TariffModalProps {
   isOpen: boolean
@@ -22,153 +22,295 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    telegram: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | "warning" | null
+    message: string
+  }>({ type: null, message: "" })
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Анимация появления
+  useEffect(() => {
+    if (isOpen) {
+      setIsVisible(true)
+    } else {
+      setIsVisible(false)
+    }
+  }, [isOpen])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value
+
+    // Автоматически добавляем @ для Telegram username
+    if (e.target.name === "telegram" && value && !value.startsWith("@")) {
+      value = "@" + value
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     })
-  }
-
-  const sendToTelegram = async (message: string) => {
-    const botToken = "YOUR_BOT_TOKEN" // Замените на токен вашего бота
-    const chatId = "@EnrikeTomas" // ID чата менеджера
-
-    try {
-      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-          parse_mode: "HTML",
-        }),
-      })
-
-      return response.ok
-    } catch (error) {
-      console.error("Ошибка отправки в Telegram:", error)
-      return false
-    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: "" })
 
-    const message = `🚗 <b>Новая заявка на хранение шин</b>
+    try {
+      const response = await fetch("/api/send-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          telegram: formData.telegram,
+          tariff: tariff,
+        }),
+      })
 
-📋 <b>Тариф:</b> ${tariff?.name}
-💰 <b>Стоимость:</b> ${tariff?.price}₽/месяц
-📝 <b>Описание:</b> ${tariff?.description}
+      const result = await response.json()
 
-👤 <b>Клиент:</b> ${formData.name}
-📞 <b>Телефон:</b> ${formData.phone}
+      if (response.ok && result.success) {
+        setSubmitStatus({
+          type: result.warning ? "warning" : "success",
+          message: result.message,
+        })
 
-⏰ <b>Время заявки:</b> ${new Date().toLocaleString("ru-RU")}`
-
-    // Попытка отправить в Telegram
-    const telegramSent = await sendToTelegram(message)
-
-    if (telegramSent) {
-      alert("Заявка успешно отправлена! Менеджер свяжется с вами в ближайшее время.")
-    } else {
-      // Fallback - показать информацию для ручной отправки
-      alert(`Заявка принята! 
-      
-Тариф: ${tariff?.name}
-Имя: ${formData.name}
-Телефон: ${formData.phone}
-
-Мы свяжемся с вами в ближайшее время.`)
+        // Показываем сообщение на 4 секунды, затем закрываем модал
+        setTimeout(() => {
+          setFormData({ name: "", phone: "", telegram: "" })
+          setSubmitStatus({ type: null, message: "" })
+          onClose()
+        }, 4000)
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Произошла ошибка при отправке заявки",
+        })
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitStatus({
+        type: "error",
+        message: "Произошла ошибка соединения. Попробуйте позвонить нам: +7 (978) 070-36-65",
+      })
     }
 
-    setFormData({ name: "", phone: "" })
     setIsSubmitting(false)
-    onClose()
+  }
+
+  const handleClose = () => {
+    if (!isSubmitting) {
+      setIsVisible(false)
+      setTimeout(() => {
+        setFormData({ name: "", phone: "", telegram: "" })
+        setSubmitStatus({ type: null, message: "" })
+        onClose()
+      }, 300)
+    }
   }
 
   if (!isOpen || !tariff) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full mx-4 relative overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 pb-8">
-          <button onClick={onClose} className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors">
-            <X className="w-6 h-6" />
-          </button>
+    <div
+      className={`fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+      onClick={handleClose}
+    >
+      <div
+        className={`bg-white rounded-3xl max-w-lg w-full mx-4 relative overflow-hidden shadow-2xl transform transition-all duration-300 ${
+          isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-8"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          disabled={isSubmitting}
+          className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-gray-800 hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-2">Оформить заявку</h2>
-            <p className="text-blue-100">Выбранный тариф</p>
-          </div>
-        </div>
-
-        {/* Tariff Info */}
-        <div className="bg-blue-50 -mt-4 mx-6 rounded-xl p-4 mb-6 border border-blue-100">
-          <div className="text-center">
-            <h3 className="text-xl font-bold text-gray-900 mb-1">{tariff.name}</h3>
-            <div className="text-2xl font-bold text-blue-600 mb-1">
-              {tariff.price} <span className="text-base font-normal text-gray-600">₽/месяц</span>
+        {/* Success State */}
+        {submitStatus.type === "success" && (
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 flex flex-col items-center justify-center p-8 z-20">
+            <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mb-6 shadow-lg animate-bounce">
+              <CheckCircle className="w-10 h-10 text-white" />
             </div>
-            <p className="text-sm text-gray-600">{tariff.description}</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">Заявка отправлена!</h3>
+            <p className="text-gray-600 text-center leading-relaxed max-w-sm">{submitStatus.message}</p>
+            <div className="mt-6 flex items-center text-sm text-gray-500">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Окно закроется автоматически
+            </div>
+          </div>
+        )}
+
+        {/* Header */}
+        <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white p-8 pb-12">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-4 left-4 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-4 right-4 w-24 h-24 bg-white rounded-full blur-2xl"></div>
+          </div>
+
+          <div className="relative text-center">
+            <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-2xl mb-4 w-12 h-12">
+              <Sparkles className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold">Оформить заявку</h2>
           </div>
         </div>
+
+        {/* Tariff Card */}
+        <div className="relative -mt-6 mx-6 mb-8">
+          <div className="bg-white p-6 shadow-xl border border-gray-100 rounded-xl">
+            <div className="text-center">
+              <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-3">
+                Выбранный тариф
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{tariff.name}</h3>
+              <div className="flex items-center justify-center mb-2">
+                <span className="text-3xl font-bold text-blue-600">{tariff.price}</span>
+                <span className="text-gray-500 ml-1">₽/месяц</span>
+              </div>
+              <p className="text-sm text-gray-600 bg-gray-50 rounded-lg px-3 py-2">{tariff.description}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Status Message */}
+        {submitStatus.type && submitStatus.type !== "success" && (
+          <div className="mx-6 mb-6">
+            <div
+              className={`p-4 rounded-xl flex items-start space-x-3 ${
+                submitStatus.type === "warning"
+                  ? "bg-amber-50 border border-amber-200"
+                  : "bg-red-50 border border-red-200"
+              }`}
+            >
+              <AlertTriangle
+                className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                  submitStatus.type === "warning" ? "text-amber-600" : "text-red-600"
+                }`}
+              />
+              <div>
+                <p
+                  className={`text-sm font-medium ${
+                    submitStatus.type === "warning" ? "text-amber-800" : "text-red-800"
+                  }`}
+                >
+                  {submitStatus.message}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Form */}
-        <div className="px-6 pb-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="modal-name" className="text-gray-700 font-medium">
-                Ваше имя *
-              </Label>
-              <Input
-                id="modal-name"
-                name="name"
-                type="text"
-                required
-                placeholder="Введите ваше имя"
-                value={formData.name}
-                onChange={handleChange}
-                className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-              />
+        <div className="px-6 pb-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="modal-name" className="text-gray-700 font-medium text-sm mb-2 block">
+                  Ваше имя
+                </Label>
+                <Input
+                  id="modal-name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Как к вам обращаться?"
+                  value={formData.name}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  className="h-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="modal-phone" className="text-gray-700 font-medium text-sm mb-2 block">
+                  Номер телефона
+                </Label>
+                <Input
+                  id="modal-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="+7 (999) 123-45-67"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  className="h-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="modal-telegram" className="text-gray-700 font-medium text-sm mb-2 block">
+                  Telegram (необязательно)
+                </Label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <MessageCircle className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <Input
+                    id="modal-telegram"
+                    name="telegram"
+                    type="text"
+                    placeholder="@ваш_username"
+                    value={formData.telegram}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="h-12 pl-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Укажите ваш Telegram для быстрой связи</p>
+              </div>
             </div>
 
-            <div>
-              <Label htmlFor="modal-phone" className="text-gray-700 font-medium">
-                Номер телефона *
-              </Label>
-              <Input
-                id="modal-phone"
-                name="phone"
-                type="tel"
-                required
-                placeholder="+7 (___) ___-__-__"
-                value={formData.phone}
-                onChange={handleChange}
-                className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-base"
+            >
+              {isSubmitting ? (
+                <div className="flex items-center">
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
+                  Отправляем заявку...
+                </div>
+              ) : (
+                <div className="flex items-center">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Оформить заявку
+                </div>
+              )}
+            </Button>
 
-            <div className="pt-4 space-y-3">
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Отправляем..." : "Оформить заявку"}
-              </Button>
+            {/* Alternative Contact Methods */}
+            <div className="space-y-3">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-4 bg-white text-gray-500">или свяжитесь напрямую</span>
+                </div>
+              </div>
 
-              <div className="flex space-x-2">
+              <div className="grid grid-cols-2 gap-3">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-50 py-2 rounded-xl transition-all duration-300 bg-transparent"
+                  className="h-12 hover:bg-blue-50 hover:border-blue-300 rounded-xl transition-all duration-200 font-medium bg-transparent text-amber-600 border-orange-400 border"
                   onClick={() => window.open("tel:+79780703665")}
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -177,7 +319,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-green-600 text-green-600 hover:bg-green-50 py-2 rounded-xl transition-all duration-300 bg-transparent"
+                  className="h-12 hover:bg-green-50 hover:border-green-300 rounded-xl transition-all duration-200 font-medium text-sky-600 bg-sky-50 border-sky-400 border"
                   onClick={() => window.open("https://t.me/EntikeTomas")}
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
@@ -187,10 +329,30 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
             </div>
           </form>
 
-          <div className="mt-4 text-center">
-            <p className="text-xs text-gray-500">
-              Нажимая "Оформить заявку", вы соглашаетесь с обработкой персональных данных
+          {/* Privacy Notice */}
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Нажимая "Оформить заявку", вы соглашаетесь с{" "}
+              <span className="text-blue-600 hover:text-blue-700 cursor-pointer">обработкой персональных данных</span>
             </p>
+          </div>
+
+          {/* Benefits */}
+          <div className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-blue-600 font-bold text-sm">БЕСПЛАТНО</div>
+                <div className="text-xs text-gray-600">Вывоз шин</div>
+              </div>
+              <div>
+                <div className="text-purple-600 font-bold text-sm">24/7</div>
+                <div className="text-xs text-gray-600">Контроль</div>
+              </div>
+              <div>
+                <div className="text-green-600 font-bold text-sm">100%</div>
+                <div className="text-xs text-gray-600">Гарантия</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -3,8 +3,41 @@ import { Car, Wrench, Package, Check, Phone, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Услуги - CarMan",
-  description: "Полный спектр услуг по хранению и обслуживанию шин в Симферополе",
+  title: "Услуги по хранению шин в Симферополе | OtelShin - Профессиональное сезонное хранение",
+  description:
+    "Полный спектр услуг по хранению шин в Симферополе от OtelShin. Климат-контроль, вывоз бесплатно, личный кабинет. Тарифы от 500₽/месяц. ☎️ +7 (978) 070-36-65",
+  keywords:
+    "услуги хранения шин Симферополь, сезонное хранение шин, хранение колес Симферополь, OtelShin услуги, шиномонтаж Симферополь, хранение резины",
+  authors: [{ name: "OtelShin" }],
+  creator: "OtelShin",
+  publisher: "OtelShin",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Услуги по хранению шин в Симферополе | OtelShin",
+    description: "Профессиональное хранение шин с климат-контролем. Вывоз бесплатно, тарифы от 500₽/месяц",
+    type: "website",
+    locale: "ru_RU",
+    siteName: "OtelShin",
+    images: [
+      {
+        url: "/og-services.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Услуги хранения шин OtelShin",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Услуги по хранению шин в Симферополе | OtelShin",
+    description: "Профессиональное хранение шин с климат-контролем. Вывоз бесплатно, тарифы от 500₽/месяц",
+  },
+  alternates: {
+    canonical: "https://otelshin.vercel.app/services",
+  },
 }
 
 export default function ServicesPage() {
@@ -75,10 +108,12 @@ export default function ServicesPage() {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-12 lg:mb-16">
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">Наши услуги</h1>
+          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">
+            Услуги по хранению шин в Симферополе
+          </h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Полный спектр услуг по хранению шин с использованием современного оборудования и профессиональных технологий
-            в Симферополе
+            от компании OtelShin в Симферополе
           </p>
         </div>
 
@@ -93,7 +128,7 @@ export default function ServicesPage() {
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 shadow-sm">
                   <service.icon className={`w-6 h-6 ${service.iconColor}`} />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
+                <h2 className="text-xl font-semibold text-gray-900">{service.title}</h2>
               </div>
 
               <p className="text-gray-600 mb-6">{service.description}</p>
@@ -113,7 +148,7 @@ export default function ServicesPage() {
         {/* Tariffs Section */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Тарифы хранения</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Тарифы хранения шин</h2>
             <p className="text-lg text-gray-600">Выберите подходящий тариф в зависимости от размера ваших шин</p>
           </div>
 
@@ -149,7 +184,7 @@ export default function ServicesPage() {
         {/* Why Choose Us */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Почему выбирают CarMan?</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Почему выбирают OtelShin?</h2>
             <p className="text-lg text-gray-600">Современный подход к хранению шин с гарантией качества</p>
           </div>
 
@@ -167,7 +202,7 @@ export default function ServicesPage() {
         <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 lg:p-12 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Готовы воспользоваться нашими услугами?</h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Свяжитесь с нами для консультации и выбора подходящего тарифа
+            Свяжитесь с нами для консультации и выбора подходящего тарифа хранения шин в Симферополе
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
