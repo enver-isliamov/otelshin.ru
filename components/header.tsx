@@ -44,23 +44,23 @@ export default function Header() {
             </Link>
           </nav>
 
-        {/* Phone and CTA - Desktop */}
+{/* Phone and CTA - Desktop */}
 <div className="hidden md:flex items-center space-x-4">
   <a href="tel:+79780703665" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
     <Phone className="w-4 h-4" />
     <span>+7 (978) 070-36-65</span>
   </a>
-  
-  <a 
-    href="https://t.me/EnrikeTomas" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group rounded-md px-4 py-2 text-white font-medium flex items-center justify-center"
+
+ <button
+    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+               disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0
+               text-primary-foreground h-9 rounded-md px-3 bg-blue-600 hover:bg-blue-700 transition-all duration-300"
   >
-    <span className="relative z-10">Бронь в Telegram</span>
-    <div className="absolute inset-0 -top-1 -left-1 w-3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
-  </a>
+    Забронировать
+  </button>
 </div>
+
 
 
           {/* Mobile CTA Button */}
