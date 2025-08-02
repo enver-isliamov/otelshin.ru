@@ -57,7 +57,7 @@ export default function Header() {
     rel="noopener noreferrer"
     className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group rounded-md px-4 py-2 text-white font-medium flex items-center justify-center"
   >
-    <span className="relative z-10">Забронировать</span>
+    <span className="relative z-10">Бронь в Telegram</span>
     <div className="absolute inset-0 -top-1 -left-1 w-3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
   </a>
 </div>
