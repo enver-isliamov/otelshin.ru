@@ -83,7 +83,7 @@ export default function ServicesPage() {
     {
       name: "R16-R19",
       price: "600",
-      description: "Хранение с дисками: +100₽",
+      description: "Хранение с дисками: +100₽, Внедорожник: +100",
       popular: true,
     },
     {
