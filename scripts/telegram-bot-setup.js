@@ -33,7 +33,7 @@ const chatId = "987654321" // или "@EnrikeTomas"
 
 // Функция для тестирования отправки сообщений
 async function testTelegramBot() {
-  const botToken = "YOUR_BOT_TOKEN" // Замените на ваш токен
+  const botToken = "6473374979:AAH8OHCxWN2kO0ep9wrbLXolk2ys4__GLqg" // Замените на ваш токен
   const chatId = "@EnrikeTomas" // Замените на Chat ID
 
   const testMessage = `🧪 <b>Тестовое сообщение</b>
