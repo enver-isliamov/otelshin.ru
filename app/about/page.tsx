@@ -198,7 +198,7 @@ export default function AboutPage() {
               variant="outline"
               className="border-green-600 text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-105 bg-transparent"
             >
-              <a href="https://t.me/EntikeTomas">
+              <a href="https://t.me/EnrikeTomas">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Написать в Telegram
               </a>
