@@ -320,7 +320,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   type="button"
                   variant="outline"
                   className="h-12 hover:bg-green-50 hover:border-green-300 rounded-xl transition-all duration-200 font-medium text-sky-600 bg-sky-50 border-sky-400 border"
-                  onClick={() => window.open("https://t.me/EntikeTomas")}
+                  onClick={() => window.open("https://t.me/EnrikeTomas")}
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Telegram
