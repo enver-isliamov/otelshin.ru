@@ -103,7 +103,7 @@ export default function ContactCTA() {
                     variant="outline"
                     className="border-green-600 text-green-600 hover:bg-green-50 h-12 w-full bg-transparent transition-all duration-300 hover:scale-105"
                   >
-                    <a href="https://t.me/EntikeTomas">
+                    <a href="https://t.me/EnrikeTomas">
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Написать в Telegram
                     </a>
