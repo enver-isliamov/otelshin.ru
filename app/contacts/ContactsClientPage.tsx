@@ -109,63 +109,7 @@ export default function ContactsClientPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-xl p-6 lg:p-8 shadow-lg border border-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Напишите нам</h2>
-            <p className="text-gray-600 mb-6">Поможем выбрать тариф и рассчитаем стоимость хранения шин</p>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Label htmlFor="name">Ваше имя *</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Введите ваше имя"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="phone">Телефон *</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  placeholder="+7 (___) ___-__-__"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="message">Сообщение *</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  placeholder="Опишите ваш вопрос или пожелание..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="mt-1"
-                  rows={5}
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                Отправить сообщение
-              </Button>
-            </form>
-          </div>
+         
 
           {/* Additional Info */}
           <div className="space-y-6">
