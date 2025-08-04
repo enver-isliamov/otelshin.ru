@@ -39,12 +39,12 @@ export default function HeroSection() {
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
-            Решаем проблему хранение ваших Шин, Колес, Дисков, Резины, Покрышек
+            Вывоз шин прямо от дома или офиса на наш счёт. Удобное хранение и защита вашего транспортного средства.
           </p>
 
           {/* Description */}
           <p className="text-sm lg:text-base mb-6 lg:mb-8 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Вывоз шин прямо от дома или офиса на наш счёт. Удобное хранение и защита вашего транспортного средства.
+            Решаем проблему хранение ваших Шин, Колес, Дисков, Резины, Покрышек
           </p>
 
           {/* CTA Buttons */}
