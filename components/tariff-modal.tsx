@@ -22,7 +22,6 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    telegram: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
@@ -41,16 +40,9 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
   }, [isOpen])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value
-
-    // Автоматически добавляем @ для Telegram username
-    if (e.target.name === "telegram" && value && !value.startsWith("@")) {
-      value = "@" + value
-    }
-
     setFormData({
       ...formData,
-      [e.target.name]: value,
+      [e.target.name]: e.target.value,
     })
   }
 
@@ -68,7 +60,6 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
         body: JSON.stringify({
           name: formData.name,
           phone: formData.phone,
-          telegram: formData.telegram,
           tariff: tariff,
         }),
       })
@@ -83,7 +74,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
 
         // Показываем сообщение на 4 секунды, затем закрываем модал
         setTimeout(() => {
-          setFormData({ name: "", phone: "", telegram: "" })
+          setFormData({ name: "", phone: "" })
           setSubmitStatus({ type: null, message: "" })
           onClose()
         }, 4000)
@@ -108,7 +99,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
     if (!isSubmitting) {
       setIsVisible(false)
       setTimeout(() => {
-        setFormData({ name: "", phone: "", telegram: "" })
+        setFormData({ name: "", phone: "" })
         setSubmitStatus({ type: null, message: "" })
         onClose()
       }, 300)
@@ -155,7 +146,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
         )}
 
         {/* Header */}
-        <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white p-8 pb-12">
+        <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white p-6 pb-10">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-4 left-4 w-32 h-32 bg-white rounded-full blur-3xl"></div>
@@ -166,20 +157,20 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
             <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-2xl mb-4 w-12 h-12">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold">Оформить заявку</h2>
+            <h2 className="text-xl font-bold">Оформить заявку</h2>
           </div>
         </div>
 
         {/* Tariff Card */}
-        <div className="relative -mt-6 mx-6 mb-8">
-          <div className="bg-white p-6 shadow-xl border border-gray-100 rounded-xl">
+        <div className="relative -mt-4 mx-4 mb-6">
+          <div className="bg-white p-4 shadow-xl border border-gray-100 rounded-xl">
             <div className="text-center">
               <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-3">
                 Выбранный тариф
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{tariff.name}</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">{tariff.name}</h3>
               <div className="flex items-center justify-center mb-2">
-                <span className="text-3xl font-bold text-blue-600">{tariff.price}</span>
+                <span className="text-2xl font-bold text-blue-600">{tariff.price}</span>
                 <span className="text-gray-500 ml-1">₽/месяц</span>
               </div>
               <p className="text-sm text-gray-600 bg-gray-50 rounded-lg px-3 py-2">{tariff.description}</p>
@@ -189,7 +180,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
 
         {/* Status Message */}
         {submitStatus.type && submitStatus.type !== "success" && (
-          <div className="mx-6 mb-6">
+          <div className="mx-4 mb-4">
             <div
               className={`p-4 rounded-xl flex items-start space-x-3 ${
                 submitStatus.type === "warning"
@@ -216,8 +207,8 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
         )}
 
         {/* Form */}
-        <div className="px-6 pb-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="px-4 pb-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="modal-name" className="text-gray-700 font-medium text-sm mb-2 block">
@@ -252,35 +243,13 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   className="h-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
                 />
               </div>
-
-              <div>
-                <Label htmlFor="modal-telegram" className="text-gray-700 font-medium text-sm mb-2 block">
-                  Telegram (необязательно)
-                </Label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <MessageCircle className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <Input
-                    id="modal-telegram"
-                    name="telegram"
-                    type="text"
-                    placeholder="@ваш_username"
-                    value={formData.telegram}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="h-12 pl-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
-                  />
-                </div>
-                <p className="text-xs text-gray-500 mt-1">Укажите ваш Telegram для быстрой связи</p>
-              </div>
             </div>
 
             {/* Submit Button */}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-base"
+              className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? (
                 <div className="flex items-center">
@@ -310,7 +279,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                 <Button
                   type="button"
                   variant="outline"
-                  className="h-12 hover:bg-blue-50 hover:border-blue-300 rounded-xl transition-all duration-200 font-medium bg-transparent text-amber-600 border-orange-400 border"
+                  className="h-10 hover:bg-blue-50 hover:border-blue-300 rounded-xl transition-all duration-200 font-medium bg-transparent text-amber-600 border-orange-400 border text-sm"
                   onClick={() => window.open("tel:+79780703665")}
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -319,7 +288,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                 <Button
                   type="button"
                   variant="outline"
-                  className="h-12 hover:bg-green-50 hover:border-green-300 rounded-xl transition-all duration-200 font-medium text-sky-600 bg-sky-50 border-sky-400 border"
+                  className="h-10 hover:bg-green-50 hover:border-green-300 rounded-xl transition-all duration-200 font-medium text-sky-600 bg-sky-50 border-sky-400 border text-sm"
                   onClick={() => window.open("https://t.me/EnrikeTomas")}
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
@@ -338,7 +307,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
           </div>
 
           {/* Benefits */}
-          <div className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4">
+          <div className="mt-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-3">
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
                 <div className="text-blue-600 font-bold text-sm">БЕСПЛАТНО</div>

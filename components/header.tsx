@@ -71,7 +71,17 @@ export default function Header() {
               }}
             >
               Тариф
-            </Button>
+            <span 
+              onClick={() => {
+                const pricingSection = document.querySelector('[data-section="pricing"]')
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              }}
+              className="cursor-pointer"
+            >
+              Забронировать
+            </span>
           </div>
         </div>
       </div>

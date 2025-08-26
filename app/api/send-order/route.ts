@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, phone, telegram, tariff } = await request.json()
+    const { name, phone, tariff } = await request.json()
 
     // Валидация данных
     if (!name || !phone || !tariff) {
@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
       console.log("📋 НОВАЯ ЗАЯВКА (Telegram не настроен):", {
         name,
         phone,
-        telegram: telegram || "не указан",
         tariff,
         timestamp: new Date().toISOString(),
       })
@@ -35,7 +34,6 @@ export async function POST(request: NextRequest) {
     const telegramResult = await sendToTelegram({
       name,
       phone,
-      telegram,
       tariff,
       botToken,
       chatId,
@@ -46,7 +44,6 @@ export async function POST(request: NextRequest) {
       console.log("✅ Order sent successfully:", {
         name,
         phone,
-        telegram: telegram || "не указан",
         tariff: tariff.name,
         timestamp: new Date().toISOString(),
       })
@@ -63,7 +60,6 @@ export async function POST(request: NextRequest) {
       console.log("📋 ЗАЯВКА ДЛЯ РУЧНОЙ ОБРАБОТКИ:", {
         name,
         phone,
-        telegram: telegram || "не указан",
         tariff,
         timestamp: new Date().toISOString(),
         error: telegramResult.error,
@@ -90,19 +86,16 @@ export async function POST(request: NextRequest) {
 async function sendToTelegram({
   name,
   phone,
-  telegram,
   tariff,
   botToken,
   chatId,
 }: {
   name: string
   phone: string
-  telegram?: string
   tariff: { name: string; price: string; description: string }
   botToken: string
   chatId: string
 }): Promise<{ success: boolean; error?: string }> {
-  const telegramInfo = telegram ? `📱 <b>Telegram:</b> ${telegram}` : `📱 <b>Telegram:</b> <i>не указан</i>`
 
   const message = `🚗 <b>Новая заявка OtelShin</b>
 
@@ -112,7 +105,6 @@ async function sendToTelegram({
 
 👤 <b>Клиент:</b> ${name}
 📞 <b>Телефон:</b> <a href="tel:${phone.replace(/\D/g, "")}">${phone}</a>
-${telegramInfo}
 
 ⏰ <b>Время заявки:</b> ${new Date().toLocaleString("ru-RU")}
 🌐 <b>Источник:</b> Сайт OtelShin
