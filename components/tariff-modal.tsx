@@ -145,21 +145,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
           </div>
         )}
 
-        {/* Header */}
-        <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white p-6 pb-10">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-4 left-4 w-32 h-32 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-4 right-4 w-24 h-24 bg-white rounded-full blur-2xl"></div>
-          </div>
-
-          <div className="relative text-center">
-            <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-2xl mb-4 w-12 h-12">
-              <Sparkles className="w-8 h-8 text-white" />
-            </div>
-            <h2 className="text-xl font-bold">Оформить заявку</h2>
-          </div>
-        </div>
+        
 
         {/* Tariff Card */}
         <div className="relative -mt-4 mx-4 mb-6">
