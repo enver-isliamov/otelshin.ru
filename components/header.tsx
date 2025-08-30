@@ -44,19 +44,16 @@ export default function Header() {
             </Link>
           </nav>
 
-{/* Phone and CTA - Desktop */}
-<div className="hidden md:flex items-center space-x-4">
-  <a href="tel:+79780703665" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-    <Phone className="w-4 h-4" />
-    <span>+7 (978) 070-36-65</span>
-  </a>
-
-  <Button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300">
-    Забронировать
-  </Button>
-</div>
-
-
+          {/* Phone and CTA - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            <a href="tel:+79780703665" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <Phone className="w-4 h-4" />
+              <span>+7 (978) 070-36-65</span>
+            </a>
+            <Button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300">
+              Забронировать
+            </Button>
+          </div>
 
           {/* Mobile CTA Button */}
           <div className="md:hidden">
@@ -70,18 +67,8 @@ export default function Header() {
                 }
               }}
             >
-              Тариф
-            <span 
-              onClick={() => {
-                const pricingSection = document.querySelector('[data-section="pricing"]')
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
-              className="cursor-pointer"
-            >
               Забронировать
-            </span>
+            </Button>
           </div>
         </div>
       </div>
