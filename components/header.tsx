@@ -50,7 +50,15 @@ export default function Header() {
               <Phone className="w-4 h-4" />
               <span>+7 (978) 070-36-65</span>
             </a>
-            <Button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300">
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
+              onClick={() => {
+                const pricingSection = document.querySelector('[data-section="pricing"]')
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              }}
+            >
               Забронировать
             </Button>
           </div>
