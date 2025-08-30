@@ -99,7 +99,6 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
 
         {/* Яндекс.Метрика - ВСТАВЬТЕ СЮДА ВАШ КОД СЧЕТЧИКА */}
-
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -113,10 +112,7 @@ export default function RootLayout({
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/97808515" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
-
-
-
+  
         {/* Structured Data */}
         <script
           type="application/ld+json"
