@@ -193,7 +193,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
         )}
 
         {/* Form */}
-        <div className="px-4 pb-6">
+        <div className="px-4 pb-4">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-4">
               <div>
@@ -209,7 +209,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="h-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
+                  className="h-11 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
                 />
               </div>
 
@@ -226,7 +226,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   value={formData.phone}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="h-12 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
+                  className="h-11 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors"
                 />
               </div>
             </div>
@@ -235,7 +235,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? (
                 <div className="flex items-center">
