@@ -12,7 +12,7 @@ export default function Testimonials() {
       name: "Денис Грошев",
       text: "Чёткий сервис! Нужно было где-то хранить шины после переезда в Симферополь. Нашел это объявление, быстро договорились по условиям. Энвер подъехал по адресу, на месте заключили договор, отдал шины. По окончании срока договора забрал шины в целости и сохранности. Рекомендую!",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://10.img.avito.st/image/1/1.RBbXFLax_v8F01h3x35d_2G14vUF0-r9.zQkFmKZz6nKnAbk9TZ8NMct33L5tReInhWF0ZJCo0cQ?cqp=2.pGdjs5fBvl5-fB-fm84xxYDAkt8GM2Wgr1fOyxua9Q==?height=40&width=40",
       role: "Владелец Mazda CX-7",
     },
 {
@@ -33,14 +33,14 @@ export default function Testimonials() {
       name: "Сергей",
       text: "Приехали вовремя, все как договаривались по телефону. Мне сильно мешали колеса на лоджии. Рад, что быстро все прошло и в моем городе можно так хранить. Через год отзыв дополню, но пока исключительно положительные впечатления. Спасибо.",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://40.img.avito.st/image/1/1.Tgd3urax9O6lfUYebsh_7cEb6OSlfeDs.q6JwuALwnhVUZ6EQI0JRzfNmZSLy2HE0U6lUs6YumlA?height=40&width=40",
       role: "Владелец Mercedes C-Class",
     },
     {
       name: "Лени",
       text: "Очень удобно, что сами приезжают забрать, для девочек очень удобная услуга) и есть договор.",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://60.img.avito.st/image/1/1.XYFatbax52iIcnOUSYw2a-wU-2KIcvNq.p_XpMThC94NA8K5nx3lwrVyORcVN02arZiNstoFfhiw?height=40&width=40",
       role: "Владелец Skoda Yeti",
     },
     {
