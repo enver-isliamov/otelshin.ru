@@ -97,6 +97,7 @@ export default function RootLayout({
         <meta name="application-name" content="OtelShin" />
         <meta name="msapplication-TileColor" content="#2563eb" />
         <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="yandex-verification" content="8e61cae97ecde44c" />
 
         {/* Structured Data */}
         <script
