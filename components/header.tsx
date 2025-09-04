@@ -52,14 +52,9 @@ export default function Header() {
             </a>
             <Button
               className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
-              onClick={() => {
-                const pricingSection = document.querySelector('[data-section="pricing"]')
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
+              asChild
             >
-              Забронировать
+              <a href="/#pricing">Забронировать</a>
             </Button>
           </div>
 
@@ -68,14 +63,9 @@ export default function Header() {
             <Button
               size="sm"
               className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
-              onClick={() => {
-                const pricingSection = document.querySelector('[data-section="pricing"]')
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
+              asChild
             >
-              Забронировать
+              <a href="/#pricing">Забронировать</a>
             </Button>
           </div>
         </div>
