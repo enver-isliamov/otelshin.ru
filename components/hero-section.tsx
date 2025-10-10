@@ -47,7 +47,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <p className="text-sm lg:text-base mb-6 lg:mb-8 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Решаем проблему у хранением ваших Колес.
+            Решаем проблему с хранением ваших Колес.
           </p>
 
           {/* CTA Buttons */}
