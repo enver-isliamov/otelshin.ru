@@ -28,11 +28,11 @@ export default function HeroSection() {
           {/* Main Heading */}
           <div className="mb-4">
             <h1 className="text-2xl lg:text-4xl font-bold mb-2">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Хранение шин</span>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">ХРАНЕНИЕ ШИН</span>
               <span className="text-gray-900"> в Симферополе</span>
             </h1>
             <h2 className="text-lg lg:text-2xl font-bold mb-2 text-gray-900 uppercase tracking-wide">
-              ХРАНЕНИЕ ШИН В СИМФЕРОПОЛЕ
+              ХРАНЕНИЕ КОЛЕС И ДИСКОВ 
             </h2>
             <div className="w-12 lg:w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
