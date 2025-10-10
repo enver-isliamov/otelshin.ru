@@ -98,7 +98,7 @@ const articles = {
     image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
 
-  "priznaki-iznosa-shin": {
+  "zabota-o-shinah": {
     title: "Сезонное хранение шин – забота о ваших колесах в OtelShin.ru",
     content: `
       <h2>Каждый год дважды автовладельцы сталкиваются с одной и той же проблемой:</h2>
