@@ -38,16 +38,16 @@ export default function HeroSection() {
           </div>
 
           {/* Subtitle */}
-          <h3 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">OtelShin в Симферополе </h3>
+          <h3 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">Отель Шин в Симферополе </h3>
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
-            Вывоз шин прямо от дома или офиса на наш счёт.
+            Вывоз шин от дома или офиса на наш счёт.
           </p>
 
           {/* Description */}
           <p className="text-sm lg:text-base mb-6 lg:mb-8 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Решаем проблему хранение ваших Шин, Колес, Дисков, Резины, Покрышек
+            Решаем проблему у хранением ваших Колес.
           </p>
 
           {/* CTA Buttons */}
