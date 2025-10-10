@@ -42,7 +42,7 @@ export default function HeroSection() {
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
-            Вывоз шин от дома или офиса на наш счёт.
+            Вывоз шин от дома или офиса на наш счёт. Решим проблему с хранением ваших колес.
           </p>
 
           {/* Description */}
