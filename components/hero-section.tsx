@@ -27,15 +27,15 @@ export default function HeroSection() {
 
           {/* Main Heading */}
           <div className="mb-4">
-            <h1 className="text-2xl lg:text-4xl font-bold mb-2 text-gray-900">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Otel</span>
-              <span className="text-gray-900">Shin</span>
+            <h1 className="text-2xl lg:text-4xl font-bold mb-2">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Хранение шин</span>
+              <span className="text-gray-900"> в Симферополе</span>
             </h1>
             <div className="w-12 lg:w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
 
           {/* Subtitle */}
-          <h2 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">Хранение шин в Симферополе</h2>
+          <h2 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">OtelShin</h2>
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
