@@ -11,12 +11,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <TargetAudience />
-      <WhyChooseUs />
       <AboutCompany />
-      <PricingSection />
-      <AdditionalInfo />
+      <TargetAudience />
+      <WhyChooseUs />      
+      <PricingSection />      
       <Testimonials />
+      <AdditionalInfo />
       <ContactCTA />
     </>
   )
