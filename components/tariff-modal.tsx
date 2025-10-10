@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { X, Phone, MessageCircle, CheckCircle, AlertTriangle, Sparkles } from "lucide-react"
+import { X, Phone, MessageCircle, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle, Sparkles } from "lucide-react"
 
 interface TariffModalProps {
   isOpen: boolean
