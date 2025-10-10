@@ -63,7 +63,7 @@ export default function ContactsClientPage() {
     {
       icon: Clock,
       title: "Режим работы",
-      value: "Ежедневно: 9:00 - 22:00",
+      value: "Ежедневно: 9:00 - 21:00",
       link: "",
       description: "Работаем без выходных для вашего удобства",
       bgColor: "bg-orange-50",
