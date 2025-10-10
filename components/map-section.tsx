@@ -17,7 +17,7 @@ export default function MapSection() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Карта расположения ТиреСторедж"
+              title="Карта расположения ОтельШин"
             ></iframe>
           </div>
         </div>
