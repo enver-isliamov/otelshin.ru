@@ -10,7 +10,7 @@ export default function WhyChooseUsServices() {
     {
       icon: Settings,
       title: "Удобное управление",
-      description: "Собственная система для отслеживания ваших шин, уведомления и онлайн бронирование",
+      description: "Собственная система для отслеживания ваших шин, уведомления и онлайн кабинет",
     },
     {
       icon: Users,
