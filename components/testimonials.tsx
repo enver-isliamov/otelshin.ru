@@ -101,45 +101,50 @@ export default function Testimonials() {
   const handleMouseLeave = () => setIsAutoPlaying(true)
 
   return (
-    <section className="py-10 md:py-16 bg-white">
+    <section className="py-10 md:py-16 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-6 md:mb-12">
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2">Отзывы клиентов</h2>
-          <p className="text-sm md:text-lg text-gray-600">Что говорят о нас наши клиенты</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Отзывы наших клиентов</h2>
+          <p className="text-base md:text-xl text-gray-600 max-w-2xl mx-auto">
+            Более 100 довольных клиентов доверяют нам хранение своих шин
+          </p>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4"></div>
         </div>
 
-        <div className="relative max-w-3xl mx-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="relative max-w-4xl mx-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {/* Main carousel container */}
-          <div className="overflow-hidden rounded-xl">
+          <div className="overflow-hidden rounded-2xl shadow-xl">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-full flex-shrink-0">
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-xl p-4 md:p-6 mx-2 shadow-sm">
+                  <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 mx-2 shadow-lg hover:shadow-xl transition-all duration-300">
                     {/* Rating stars */}
-                    <div className="flex items-center justify-center mb-3">
+                    <div className="flex items-center justify-center mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
+                        <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-current mr-1" />
                       ))}
                     </div>
 
                     {/* Quote */}
-                    <div className="text-center mb-4">
-                      <p className="text-gray-700 text-xs md:text-sm leading-relaxed italic">"{testimonial.text}"</p>
+                    <div className="text-center mb-6">
+                      <p className="text-gray-700 text-sm md:text-base leading-relaxed italic font-medium">
+                        "{testimonial.text}"
+                      </p>
                     </div>
 
                     {/* Author info */}
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center border-t border-gray-100 pt-4">
                       <img
                         src={testimonial.avatar || "/placeholder.svg"}
                         alt={testimonial.name}
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full mr-3 border-2 border-white shadow-sm"
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-4 border-2 border-blue-100 shadow-md"
                       />
                       <div className="text-center md:text-left">
-                        <div className="font-semibold text-gray-900 text-xs md:text-sm">{testimonial.name}</div>
-                        <div className="text-xs text-gray-600">{testimonial.role}</div>
+                        <div className="font-bold text-gray-900 text-sm md:text-base">{testimonial.name}</div>
+                        <div className="text-xs md:text-sm text-blue-600 font-medium">{testimonial.role}</div>
                       </div>
                     </div>
                   </div>
