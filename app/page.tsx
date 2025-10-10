@@ -10,13 +10,13 @@ import ContactCTA from "@/components/contact-cta"
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
-      <AboutCompany />
+     <HeroSection />
       <TargetAudience />
-      <WhyChooseUs />      
-      <PricingSection />      
-      <Testimonials />
+      <WhyChooseUs />
+      <AboutCompany />
+      <PricingSection />
       <AdditionalInfo />
+      <Testimonials />
       <ContactCTA />
     </>
   )
