@@ -88,7 +88,7 @@ export default function Footer() {
             <div className="flex items-start space-x-2">
               <Clock className="w-4 h-4 text-blue-400 mt-1" />
               <div className="text-gray-400">
-                <p>Ежедневно: 9:00 - 22:00</p>
+                <p>Ежедневно: 9:00 - 21:00</p>
                 <p className="text-xs">Всегда на связи</p>
               </div>
             </div>
