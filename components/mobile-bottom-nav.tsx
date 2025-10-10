@@ -31,12 +31,7 @@ export default function MobileBottomNav() {
       icon: Phone,
       label: "Контакты",
     },
-    {
-      href: "/blog",
-      icon: Blog,
-      label: "Блог",
-    },
-  ]
+      ]
 
   useEffect(() => {
     const controlNavbar = () => {
