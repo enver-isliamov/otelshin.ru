@@ -170,9 +170,10 @@ type ArticleParams = {
   slug: string
 }
 
-export async function generateMetadata({ params }: { params: ArticleParams }): Promise<Metadata> {
-  const article = articles[params.slug as keyof typeof articles]
-  
+export async function generateMetadata({ params }: { params: Promise<ArticleParams> }): Promise<Metadata> {
+  const { slug } = await params
+  const article = articles[slug as keyof typeof articles]
+
   if (!article) {
     return {
       title: "Статья не найдена | OtelShin",
@@ -185,8 +186,9 @@ export async function generateMetadata({ params }: { params: ArticleParams }): P
   }
 }
 
-export default function ArticlePage({ params }: { params: ArticleParams }) {
-  const article = articles[params.slug as keyof typeof articles]
+export default async function ArticlePage({ params }: { params: Promise<ArticleParams> }) {
+  const { slug } = await params
+  const article = articles[slug as keyof typeof articles]
 
   if (!article) {
     notFound()
