@@ -38,16 +38,16 @@ export default function HeroSection() {
           </div>
 
           {/* Subtitle */}
-          <h3 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">Отель Шин в Симферополе </h3>
+          <h3 className="text-base lg:text-xl mb-2 text-gray-700 font-medium">Решим проблему с хранением ваших колес</h3>
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
-            Решим проблему с хранением ваших колес.
+            Отель Шин в Симферополе
           </p>
 
           {/* Description */}
           <p className="text-sm lg:text-base mb-6 lg:mb-8 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Решаем проблему с хранением ваших Колес.
+            Заключаем договор.
           </p>
 
           {/* CTA Buttons */}
