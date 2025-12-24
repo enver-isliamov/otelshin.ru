@@ -32,7 +32,7 @@ export default function HeroSection() {
               <span className="text-gray-900"> ШИН </span>
             </h1>
             <h2 className="text-lg lg:text-2xl font-bold mb-2 text-gray-900 uppercase tracking-wide">
-              ХРАНЕНИЕ КОЛЕС И ДИСКОВ 
+              Вывоз шин от дома или офиса на наш счёт 
             </h2>
             <div className="w-12 lg:w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
@@ -42,7 +42,7 @@ export default function HeroSection() {
 
           {/* Location */}
           <p className="text-sm lg:text-base mb-4 text-gray-600">
-            Вывоз шин от дома или офиса на наш счёт. Решим проблему с хранением ваших колес.
+            Решим проблему с хранением ваших колес.
           </p>
 
           {/* Description */}
