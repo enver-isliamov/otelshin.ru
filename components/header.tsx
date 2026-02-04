@@ -55,9 +55,9 @@ export default function Header() {
 
           {/* Phone and CTA - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="tel:+79780703665" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+            <a href="tel:+79790662089" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
               <Phone className="w-4 h-4" />
-              <span>+7 (978) 070-36-65</span>
+              <span>+7 (979) 066-20-89</span>
             </a>
             <Button
               className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
