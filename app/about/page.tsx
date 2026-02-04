@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "5+ лет опыта, современные технологии, 100+ довольных клиентов",
   },
   alternates: {
-    canonical: "https://otelshin.vercel.app/about",
+    canonical: "https://www.otelshin.ru/about",
   },
 }
 
