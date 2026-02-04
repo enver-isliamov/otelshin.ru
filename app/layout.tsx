@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: "Современный сервис хранения шин в Симферополе с вывозом на дом. Тарифы от 500₽/месяц",
     type: "website",
     locale: "ru_RU",
-    url: "https://otelshin.vercel.app",
+    url: "https://otelshin.ru",
     siteName: "OtelShin",
     images: [
       {
@@ -108,8 +108,8 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "OtelShin",
               description: "Надёжное хранение шин в Симферополе",
-              url: "https://otelshin.vercel.app",
-              telephone: "+79780703665",
+              url: "https://www.otelshin.ru",
+              telephone: "+79790662089",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Симферополь",
