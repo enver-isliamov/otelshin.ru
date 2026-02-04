@@ -33,8 +33,8 @@ export default function ContactsClientPage() {
     {
       icon: Phone,
       title: "Телефон",
-      value: "+7 (978) 070-36-65",
-      link: "tel:+79780703665",
+      value: "+7 (979) 066-20-89",
+      link: "tel:+79790662089",
       description: "Всегда на связи",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
@@ -151,7 +151,7 @@ export default function ContactsClientPage() {
                   size="lg"
                   className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
                 >
-                  <a href="tel:+79780703665">
+                  <a href="tel:+79790662089">
                     <Phone className="w-4 h-4 mr-2" />
                     Позвонить сейчас
                   </a>
