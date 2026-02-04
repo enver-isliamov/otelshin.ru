@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "Услуги по хранению шин в Симферополе | OtelShin - Профессиональное сезонное хранение",
   description:
-    "Полный спектр услуг по хранению шин в Симферополе от OtelShin. Климат-контроль, вывоз бесплатно, личный кабинет. Тарифы от 500₽/месяц. ☎️ +7 (978) 070-36-65",
+    "Полный спектр услуг по хранению шин в Симферополе от OtelShin. Климат-контроль, вывоз бесплатно, личный кабинет. Тарифы от 500₽/месяц. ☎️ +7 (979) 066-20-89",
   keywords:
     "услуги хранения шин Симферополь, сезонное хранение шин, хранение колес Симферополь, OtelShin услуги, шиномонтаж Симферополь, хранение резины, отлель шин, шинны отель, склад шин, тарнсшина, шиномонтаж в симферополе, автошина симферополь, автошины симферополь",
   authors: [{ name: "OtelShin" }],
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "Профессиональное хранение шин с климат-контролем. Вывоз бесплатно, тарифы от 500₽/месяц",
   },
   alternates: {
-    canonical: "https://otelshin.vercel.app/services",
+    canonical: "https://www.otelshin.ru/services",
   },
 }
 
@@ -211,7 +211,7 @@ export default function ServicesPage() {
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
             >
-              <a href="tel:+79780703665">
+              <a href="tel:+79790662089">
                 <Phone className="w-4 h-4 mr-2" />
                 Позвонить сейчас
               </a>
