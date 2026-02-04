@@ -187,7 +187,7 @@ export default function AboutPage() {
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
             >
-              <a href="tel:+79780703665">
+              <a href="tel:+79790662089">
                 <Phone className="w-4 h-4 mr-2" />
                 Позвонить сейчас
               </a>
