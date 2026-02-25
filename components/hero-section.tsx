@@ -9,21 +9,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50/30 to-purple-50/30"></div>
       <div className="relative container mx-auto px-4 py-8 lg:py-12">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Logo */}
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl transform rotate-12 relative overflow-hidden">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-xl flex items-center justify-center transform -rotate-12">
-                  <Circle className="w-6 h-6 lg:w-8 lg:h-8 text-blue-600" />
-                </div>
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 -top-2 -left-2 w-6 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform rotate-45 animate-shimmer"></div>
-              </div>
-              <div className="absolute -top-1 -right-1 lg:-top-2 lg:-right-2 w-6 h-6 lg:w-8 lg:h-8 bg-green-400 rounded-full border-2 lg:border-3 border-white flex items-center justify-center">
-                <span className="text-white text-xs font-bold">✓</span>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Main Heading */}
           <div className="mb-4">
