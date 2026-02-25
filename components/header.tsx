@@ -65,6 +65,7 @@ export default function Header() {
 >
   Забронировать
 </Link>
+            </div>
 
           {/* Mobile CTA Button */}
           <div className="md:hidden">
