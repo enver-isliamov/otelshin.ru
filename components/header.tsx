@@ -59,33 +59,21 @@ export default function Header() {
               <Phone className="w-4 h-4" />
               <span>+7 (979) 066-20-89</span>
             </a>
-            <Button
-              className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
-              onClick={() => {
-                const pricingSection = document.querySelector('[data-section="pricing"]')
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
-            >
-              Забронировать
-            </Button>
-          </div>
+           <Link 
+  href="/#pricing"
+  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center"
+>
+  Забронировать
+</Link>
 
           {/* Mobile CTA Button */}
           <div className="md:hidden">
-            <Button
-              size="sm"
-              className="bg-blue-600 hover:bg-blue-700 transition-all duration-300"
-              onClick={() => {
-                const pricingSection = document.querySelector('[data-section="pricing"]')
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
-            >
-              Забронировать
-            </Button>
+            <Link 
+  href="/#pricing"
+  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300"
+>
+  Забронировать
+</Link>
           </div>
         </div>
       </div>
