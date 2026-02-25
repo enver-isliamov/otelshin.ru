@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "OtelShin - Надёжное хранение шин в Симферополе",
     description: "Современный сервис хранения шин в Симферополе с вывозом на дом. Тарифы от 500₽/месяц",
