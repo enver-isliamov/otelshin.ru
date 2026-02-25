@@ -70,7 +70,7 @@ export default function PricingSection() {
 
   return (
     <>
-      <section className="py-12 md:py-16 bg-gray-50" data-section="pricing">
+      <section id="pricing" className="py-12 md:py-16 bg-gray-50" data-section="pricing">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Тарифы хранения</h2>
