@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
+    yandex: "e239720fff026ba2",  // ← ваш код
   },
     generator: 'v0.dev'
 }
