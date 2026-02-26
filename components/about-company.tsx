@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function AboutCompany() {
   const stats = [
@@ -24,7 +25,9 @@ export default function AboutCompany() {
                 автоматизированной системой для удобного управления заказами.
               </p>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">Узнать больше</Button>
+            <Button asChild className="bg-blue-600 hover:bg-blue-700">
+              <Link href="/about">Подробнее</Link>
+            </Button>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
