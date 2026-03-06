@@ -48,7 +48,7 @@ export default function HeroSection() {
                 }
               }}
             >
-              <span className="relative z-10">Выбрать тариф</span>
+              <span className="relative z-10">Смотреть тариф</span>
               <ArrowRight className="ml-2 w-4 h-4 relative z-10" />
               <div className="absolute inset-0 -top-2 -left-2 w-6 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
             </Button>
