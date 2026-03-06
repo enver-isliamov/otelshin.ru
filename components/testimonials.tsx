@@ -15,6 +15,13 @@ export default function Testimonials() {
       avatar: "https://10.img.avito.st/image/1/1.RBbXFLax_v8F01h3x35d_2G14vUF0-r9.zQkFmKZz6nKnAbk9TZ8NMct33L5tReInhWF0ZJCo0cQ?cqp=2.pGdjs5fBvl5-fB-fm84xxYDAkt8GM2Wgr1fOyxua9Q==?height=40&width=40",
       role: "Владелец Mazda CX-7",
     },
+    {
+      name: "Елена Морозова",
+      text: "Пользуюсь услугами уже 3 года. Никаких проблем, всегда вежливое обслуживание и качественное хранение.",
+      rating: 5,
+      avatar: "/placeholder.svg?height=40&width=40",
+      role: "Владелец Volkswagen Polo",
+    },
 {
       name: "Виктория",
       text: "Отличная услуга! Энвер подъехал к подъезду дома в договоренное время, осмотрел шины, произвел фото фиксацию, спокойно ответил на поставленные вопросы. Составили договор на определенный срок хранения. Сам выгрузил и загрузил в автомобиль для перевозки. От меня, как заказчика, понадобилось только присутствие при передаче шин и оплата. Действительно очень полезная и важная услуга для девушек водителей !",
@@ -27,9 +34,56 @@ export default function Testimonials() {
       text: "Энвер пунктуален , приехал по указанному мною адресу, забрал на хранение 4 шины, подписали договор хранения на 5 месяцев. Надеюсь на долговременное сотрудничество. С ним можно иметь дело",
       rating: 5,
       avatar: "/placeholder.svg?height=40&width=40",
+      role: "Владелец Changan",
+    },
+{
+      name: "Артём",
+      text: "Все четко, приехал забрал резину, в ТГ боте все отображается (состояние шин, срок хранения и уведомляшка должна прийти об окончании хранения). Удачи в твоем деле✌️",
+      rating: 5,
+      avatar: "https://00.img.avito.st/image/1/1.dE2fXLayzqRNmwgssyj7piv30sJN_9o.uKUtOcjCXxy-pLx3wDyGeeRDXqLb5quu21GbATLzT_o?cqp=2.pGdjs5fBvl5-fB-fm84xxYDAkt8GM2Wgr1fOyxua9Q==",
       role: "Владелец Volkswagen Passat",
     },
-  {
+    {
+      name: "Максим",
+      text: "Договорились с представителем о времени и месте , приехал забрал отвёз резину, после сообщил о приеме и недостатков.Оставил на хранение по заявленному сроку и цене. Спасибо.",
+      rating: 5,
+      avatar: "https://80.img.avito.st/image/1/1.7v15X7axVBSrmKa6ZkyFFM_-SB6rmEAW.U5VcMT4A3bNQxdB2IwQm7Bf_i7dGogLq04AI16-XDGw",
+      role: "Владелец Hyundai Solaris",
+    },
+    
+      
+    {
+      name: "Мария Сидорова",
+      text: "Очень удобно! Система позволяет отслеживать свои шины онлайн. Доставка работает отлично.",
+      rating: 5,
+      avatar: "/placeholder.svg?height=40&width=40",
+      role: "Владелец Audi A4",
+    },
+    
+    {
+      name: "Дмитрий Козлов",
+      text: "Рекомендую всем! Цены адекватные, качество на высоте. Особенно нравится что можно заказать дополнительные услуги.",
+      rating: 5,
+      avatar: "/placeholder.svg?height=40&width=40",
+      role: "Владелец Toyota Camry",
+    },
+
+    {
+      name: "Марина",
+      text: "Удивительно, что не знали раньше про такую услугу! Сам приехал, помог вынести. Объяснил как всё устроено, показал сайт и как зайти в личный кабинет. Видно, что развивается и ценит качество. Спасибо отельшин за то что осводили наш балкон 😌",
+      rating: 5,
+      avatar: "https://90.img.avito.st/image/1/1.0VOMvbaya7peeucc8IYkuDgWd9xeHn8.KzCZqR2y9IgrbB_PtKfQmto4iu_jEVluTyikBhWU5_Y",
+      role: "Владелец Volkswagen Polo",
+    },
+
+    {
+      name: "Мустафа",
+      text: "Все прозрачно и комфортно. Как мне раньше не приходило в голову, что можно хранить резину не в квартире)) Приятно иметь дело с таким специалистом! 🙏",
+      rating: 5,
+      avatar: "https://60.img.avito.st/image/1/1.OVo1Ybayg7Pnpl9aUlvbsYHKn9Xnwpc.vBtDmEmCYbNTAjZJI_LE6_Ur_HtAwA5_SQPmN__lBaU",
+      role: "Владелец Volkswagen Polo",
+    },
+     {
       name: "Сергей",
       text: "Приехали вовремя, все как договаривались по телефону. Мне сильно мешали колеса на лоджии. Рад, что быстро все прошло и в моем городе можно так хранить. Через год отзыв дополню, но пока исключительно положительные впечатления. Спасибо.",
       rating: 5,
@@ -43,20 +97,6 @@ export default function Testimonials() {
       avatar: "https://60.img.avito.st/image/1/1.XYFatbax52iIcnOUSYw2a-wU-2KIcvNq.p_XpMThC94NA8K5nx3lwrVyORcVN02arZiNstoFfhiw?height=40&width=40",
       role: "Владелец Skoda Yeti",
     },
-    {
-      name: "Мария Сидорова",
-      text: "Очень удобно! Система позволяет отслеживать свои шины онлайн. Доставка работает отлично.",
-      rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
-      role: "Владелец Audi A4",
-    },
-    {
-      name: "Дмитрий Козлов",
-      text: "Рекомендую всем! Цены адекватные, качество на высоте. Особенно нравится что можно заказать дополнительные услуги.",
-      rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
-      role: "Владелец Toyota Camry",
-    },
   {
       name: "Арсен",
       text: "Очень удобная услуга, Вежливый исполнитель. Встреча состоялась быстро, без каких либо проблем👍🏻",
@@ -64,13 +104,22 @@ export default function Testimonials() {
       avatar: "/placeholder.svg?height=40&width=40",
       role: "Владелец Volkswagen Passat",
     },
-    {
-      name: "Елена Морозова",
-      text: "Пользуюсь услугами уже 3 года. Никаких проблем, всегда вежливое обслуживание и качественное хранение.",
+     {
+      name: "Seyt",
+      text: "Отличный сервис, очень порадовала оперативность. В оговоренное время приехали, Сами увезли на сезонное хранение шин сразу после замены, прямо с шиномонтажа. Привезти обещали в нужное место в нужное время. Надеюсь пройдет также гладко. В целом очень удобно, не пришлось напрягать спину и занимать место на балконе.",
       rating: 5,
       avatar: "/placeholder.svg?height=40&width=40",
-      role: "Владелец Volkswagen Polo",
+      role: "Владелец Nissan Juke",
     },
+    
+     {
+      name: "leman",
+      text: "Всё прошло удачно шины в безопасности, арендатор оказался очень хорошим доброжилательным, отзывчивым.",
+      rating: 5,
+      avatar: "/placeholder.svg?height=40&width=40",
+      role: "Владелец Nissan Juke",
+    },
+   
     
   ]
 
