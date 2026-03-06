@@ -33,7 +33,7 @@ export default function Testimonials() {
       name: "Борис",
       text: "Энвер пунктуален , приехал по указанному мною адресу, забрал на хранение 4 шины, подписали договор хранения на 5 месяцев. Надеюсь на долговременное сотрудничество. С ним можно иметь дело",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://static.avito.ru/stub_avatars/Б/11_48x48.png",
       role: "Владелец Changan",
     },
 {
@@ -101,14 +101,14 @@ export default function Testimonials() {
       name: "Арсен",
       text: "Очень удобная услуга, Вежливый исполнитель. Встреча состоялась быстро, без каких либо проблем👍🏻",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://static.avito.ru/stub_avatars/А/2_48x48.png",
       role: "Владелец Volkswagen Passat",
     },
      {
       name: "Seyt",
       text: "Отличный сервис, очень порадовала оперативность. В оговоренное время приехали, Сами увезли на сезонное хранение шин сразу после замены, прямо с шиномонтажа. Привезти обещали в нужное место в нужное время. Надеюсь пройдет также гладко. В целом очень удобно, не пришлось напрягать спину и занимать место на балконе.",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://static.avito.ru/stub_avatars/S/2_48x48.png",
       role: "Владелец Nissan Juke",
     },
     
@@ -116,7 +116,7 @@ export default function Testimonials() {
       name: "leman",
       text: "Всё прошло удачно шины в безопасности, арендатор оказался очень хорошим доброжилательным, отзывчивым.",
       rating: 5,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "https://static.avito.ru/stub_avatars/L/9_48x48.png",
       role: "Владелец Nissan Juke",
     },
    
