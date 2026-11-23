@@ -1,12 +1,10 @@
 "use client"
 
-import type React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Phone, MapPin, Clock } from "lucide-react"
+import { Phone, MapPin } from "lucide-react"
 import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
 import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
 import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
+import { MessengerButtonsFull } from "@/components/messenger-buttons"
 
 export default function ContactsClientPage() {
   const contactMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
@@ -14,10 +12,10 @@ export default function ContactsClientPage() {
   const contactMethods = [
     {
       icon: Phone,
-      title: "Телефон (звонки)",
+      title: "Телефон",
       value: CALL_PHONE,
       link: `tel:${CALL_PHONE_RAW}`,
-      description: "Основной рабочий номер для звонков",
+      description: "Звонки, основной номер",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
       linkColor: "text-blue-600 hover:text-blue-700",
@@ -25,7 +23,7 @@ export default function ContactsClientPage() {
     },
     {
       icon: MaxIcon,
-      title: "Мессенджер MAX",
+      title: "MAX",
       value: CALL_PHONE,
       link: MAX_URL,
       description: "Чат по рабочему номеру",
@@ -74,16 +72,16 @@ export default function ContactsClientPage() {
   return (
     <div className="py-12 lg:py-20">
       <div className="container mx-auto px-4">
-        {/* Hero Section */}
+        {/* Hero */}
         <div className="text-center mb-12 lg:mb-16">
           <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">Контакты OtelShin</h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Свяжитесь с нами любым удобным способом: по телефону, в мессенджере MAX, WhatsApp или Telegram. 
+            Свяжитесь с нами любым удобным способом: по телефону, в MAX, WhatsApp или Telegram.
             Бесплатно приедем к вашему дому или офису в Симферополе и заберем шины на хранение.
           </p>
         </div>
 
-        {/* Quick Contact Methods */}
+        {/* Contact Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-12 lg:mb-16">
           {contactMethods.map((method, index) => (
             <div
@@ -106,125 +104,45 @@ export default function ContactsClientPage() {
                     {method.value}
                   </a>
                 ) : (
-                  <p className="font-medium text-gray-900 mb-2">{method.value}</p>
+                  <p className="font-medium text-gray-700 mb-2">{method.value}</p>
                 )}
+                <p className="text-xs text-gray-500">{method.description}</p>
               </div>
-              <p className="text-xs text-gray-600 mt-2">{method.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Additional Info */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 lg:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Почему стоит выбрать OtelShin?</h3>
-              <ul className="space-y-3 text-sm text-gray-600">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                  Вывоз шин от дома/офиса БЕСПЛАТНО
+        {/* CTA + Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Why Us */}
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 lg:p-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Почему выбирают OtelShin</h3>
+            <ul className="space-y-3 text-sm text-gray-700">
+              {[
+                "Вывоз шин от дома/офиса БЕСПЛАТНО",
+                "Контроль условий хранения 24/7",
+                "Личный кабинет для отслеживания",
+                "Автоматические напоминания",
+                "Более 100 довольных клиентов в Симферополе",
+                "Официальный договор ответственного хранения",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0" />
+                  {item}
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-green-600 rounded-full mr-3"></div>
-                  Контроль условий хранения 24/7
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full mr-3"></div>
-                  Личный кабинет для отслеживания
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mr-3"></div>
-                  Автоматические напоминания
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  Более 100 довольных клиентов в Симферополе
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full mr-3"></div>
-                  Официальный договор ответственного хранения
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
 
-          {/* Quick Connect Box */}
+          {/* Quick Connect */}
           <div className="bg-white rounded-xl p-6 lg:p-8 shadow-md border border-gray-100 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Быстрая связь с OtelShin</h3>
               <p className="text-gray-600 text-sm mb-6">
-                Выберите удобный канал связи. Мы оперативно ответим и согласуем время бесплатного забора шин.
+                Выберите удобный канал. Оперативно ответим и согласуем время бесплатного забора шин.
               </p>
             </div>
-
-            <div className="space-y-3">
-              {/* Call */}
-              <Button
-                asChild
-                size="lg"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02] shadow-sm"
-              >
-                <a
-                  href={`tel:${CALL_PHONE_RAW}`}
-                  onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "contacts_page_cta" })}
-                >
-                  <Phone className="w-4 h-4 mr-2" />
-                  Позвонить: {CALL_PHONE}
-                </a>
-              </Button>
-
-              {/* MAX Messenger */}
-              <Button
-                asChild
-                size="lg"
-                className="w-full bg-violet-600 hover:bg-violet-700 text-white transition-all duration-300 hover:scale-[1.02] shadow-sm"
-              >
-                <a
-                  href={MAX_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "contacts_page_cta" })}
-                >
-                  <MaxIcon className="w-4 h-4 mr-2" />
-                  Написать в MAX ({CALL_PHONE})
-                </a>
-              </Button>
-
-              {/* WhatsApp */}
-              <Button
-                asChild
-                size="lg"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-300 hover:scale-[1.02] shadow-sm"
-              >
-                <a
-                  href={getWhatsAppUrl(contactMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "contacts_page_cta" })}
-                >
-                  <WhatsAppIcon className="w-4 h-4 mr-2" />
-                  Написать в WhatsApp ({MESSENGER_PHONE})
-                </a>
-              </Button>
-
-              {/* Telegram */}
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full border-sky-500 text-sky-600 hover:bg-sky-50 transition-all duration-300 hover:scale-[1.02] bg-white"
-              >
-                <a
-                  href={getTelegramUrl(contactMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "contacts_page_cta" })}
-                >
-                  <TelegramIcon className="w-4 h-4 mr-2 text-sky-500" />
-                  Написать в Telegram (@EnrikeTomas)
-                </a>
-              </Button>
-            </div>
+            <MessengerButtonsFull message={contactMessage} location="contacts_page_cta" />
           </div>
         </div>
       </div>

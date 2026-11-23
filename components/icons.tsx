@@ -28,16 +28,29 @@ export function TelegramIcon({ className = "w-4 h-4", ...props }: React.SVGProps
   )
 }
 
+/**
+ * Официальный логотип VK MAX (мессенджер)
+ * Стилизованная буква M с закруглёнными концами — фирменный знак MAX
+ */
 export function MaxIcon({ className = "w-4 h-4", ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M3 4h3.6l5.4 8.1L17.4 4H21v16h-3.6v-9.2L12 17.2l-5.4-6.4V20H3V4z" />
+      {/* Фирменный логотип MAX — стилизованная М с двумя пиками */}
+      <rect width="24" height="24" rx="6" fill="currentColor" fillOpacity="0" />
+      <path
+        d="M2.5 18.5V5.5L8.5 14.5L12 9L15.5 14.5L21.5 5.5V18.5"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
     </svg>
   )
 }

@@ -1,10 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Phone, Clock, ArrowRight } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
+import { Clock, ArrowRight } from "lucide-react"
+import { MessengerButtonsFull } from "@/components/messenger-buttons"
 
 export default function ContactCTA() {
   const ctaMessage = "Здравствуйте! Хочу сдать шины на хранение в Симферополе с бесплатным вывозом. Подскажите, когда можете забрать?"
@@ -82,110 +79,18 @@ export default function ContactCTA() {
             </div>
 
             {/* Contact & CTA */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Свяжитесь с нами</h3>
-
-                {/* Quick Action Buttons */}
-                <div className="space-y-3 mb-6">
-                  {/* Phone Call */}
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
-                  >
-                    <a
-                      href={`tel:${CALL_PHONE_RAW}`}
-                      onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "contact_cta" })}
-                    >
-                      <span className="relative z-10 flex items-center justify-center font-medium">
-                        <Phone className="w-4 h-4 mr-2" />
-                        Позвонить: {CALL_PHONE}
-                      </span>
-                      <div className="absolute inset-0 -top-1 -left-1 w-4 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
-                    </a>
-                  </Button>
-
-                  {/* MAX Messenger */}
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-violet-600 hover:bg-violet-700 text-white h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    <a
-                      href={MAX_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "contact_cta" })}
-                    >
-                      <span className="flex items-center justify-center font-medium">
-                        <MaxIcon className="w-4 h-4 mr-2" />
-                        Мессенджер MAX ({CALL_PHONE})
-                      </span>
-                    </a>
-                  </Button>
-
-                  {/* WhatsApp */}
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    <a
-                      href={getWhatsAppUrl(ctaMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "contact_cta" })}
-                    >
-                      <span className="flex items-center justify-center font-medium">
-                        <WhatsAppIcon className="w-5 h-5 mr-2" />
-                        Написать в WhatsApp
-                      </span>
-                    </a>
-                  </Button>
-
-                  {/* Telegram */}
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="border-sky-500 text-sky-600 hover:bg-sky-50 h-12 w-full bg-transparent transition-all duration-300 hover:scale-105"
-                  >
-                    <a
-                      href={getTelegramUrl(ctaMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "contact_cta" })}
-                    >
-                      <span className="flex items-center justify-center font-medium">
-                        <TelegramIcon className="w-5 h-5 mr-2 text-sky-500" />
-                        Написать в Telegram
-                      </span>
-                    </a>
-                  </Button>
-                </div>
-
-                {/* Help Text */}
-                <div className="border-t border-gray-100 pt-4">
-                  <p className="text-center text-sm text-gray-600">
-                    Поможем выбрать тариф и рассчитаем точную стоимость
-                  </p>
-                </div>
+            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Свяжитесь с нами</h3>
+              <MessengerButtonsFull message={ctaMessage} location="contact_cta" />
+              <div className="border-t border-gray-100 mt-4 pt-4">
+                <p className="text-center text-sm text-gray-600">
+                  Поможем выбрать тариф и рассчитаем точную стоимость
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-100%) -skew-x-12; }
-          100% { transform: translateX(300%) -skew-x-12; }
-        }
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-      `}</style>
     </section>
   )
 }

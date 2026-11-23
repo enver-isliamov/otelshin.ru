@@ -92,7 +92,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "footer" })}
                   className="text-gray-400 hover:text-violet-400 transition-colors"
-                  title="Мессенджер MAX"
+                  title="MAX"
                 >
                   MAX: {CALL_PHONE}
                 </a>
