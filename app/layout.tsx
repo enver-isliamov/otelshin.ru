@@ -5,6 +5,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import MobileBottomNav from "@/components/mobile-bottom-nav"
+import MetrikaTracker from "@/components/metrika-tracker"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
@@ -130,6 +131,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} pb-16 md:pb-0`}>
+        <MetrikaTracker />
         <Header />
         <main>{children}</main>
         <div className="hidden md:block">
