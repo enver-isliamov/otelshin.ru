@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { X, Phone, MessageCircle, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle, Sparkles } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_ORDER_SUBMIT } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
+import { CALL_PHONE, CALL_PHONE_RAW, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK, GOAL_ORDER_SUBMIT } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
 
 interface TariffModalProps {
   isOpen: boolean
@@ -254,40 +254,56 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   <div className="w-full border-t border-gray-100"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-3 bg-white text-gray-500 text-xs">или напишите / позвоните нам</span>
+                  <span className="px-3 bg-white text-gray-500 text-xs">или свяжитесь напрямую</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
-                {/* WhatsApp with prefilled message */}
+              <div className="grid grid-cols-4 gap-1.5">
+                {/* MAX Messenger (по рабочему номеру) */}
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="h-10 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg transition-all duration-200 bg-white text-emerald-600 border-emerald-300 border flex items-center justify-center p-1 text-xs"
+                  className="h-10 hover:bg-violet-50 hover:border-violet-300 rounded-lg transition-all duration-200 bg-white text-violet-700 border-violet-300 border flex flex-col items-center justify-center p-1 text-[11px]"
+                  onClick={() => {
+                    reachGoal(GOAL_MAX_CLICK, { source: "tariff_modal", tariff: tariff.name })
+                    window.open(MAX_URL, "_blank")
+                  }}
+                  title="Мессенджер MAX (+7 979 066-20-89)"
+                >
+                  <MaxIcon className="w-3.5 h-3.5 text-violet-600 mb-0.5" />
+                  <span>MAX</span>
+                </Button>
+
+                {/* WhatsApp */}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="h-10 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg transition-all duration-200 bg-white text-emerald-600 border-emerald-300 border flex flex-col items-center justify-center p-1 text-[11px]"
                   onClick={() => {
                     reachGoal(GOAL_WHATSAPP_CLICK, { source: "tariff_modal", tariff: tariff.name })
                     window.open(getWhatsAppUrl(getMessengerText()), "_blank")
                   }}
                   title="Написать в WhatsApp"
                 >
-                  <WhatsAppIcon className="w-4 h-4 mr-1 text-emerald-600" />
+                  <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600 mb-0.5" />
                   <span>WhatsApp</span>
                 </Button>
 
-                {/* Telegram with prefilled message */}
+                {/* Telegram */}
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="h-10 hover:bg-sky-50 hover:border-sky-300 rounded-lg transition-all duration-200 text-sky-600 bg-white border-sky-300 border flex items-center justify-center p-1 text-xs"
+                  className="h-10 hover:bg-sky-50 hover:border-sky-300 rounded-lg transition-all duration-200 text-sky-600 bg-white border-sky-300 border flex flex-col items-center justify-center p-1 text-[11px]"
                   onClick={() => {
                     reachGoal(GOAL_TELEGRAM_CLICK, { source: "tariff_modal", tariff: tariff.name })
                     window.open(getTelegramUrl(getMessengerText()), "_blank")
                   }}
                   title="Написать в Telegram"
                 >
-                  <TelegramIcon className="w-4 h-4 mr-1 text-sky-600" />
+                  <TelegramIcon className="w-3.5 h-3.5 text-sky-600 mb-0.5" />
                   <span>Telegram</span>
                 </Button>
 
@@ -296,14 +312,14 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="h-10 hover:bg-blue-50 hover:border-blue-300 rounded-lg transition-all duration-200 bg-white text-blue-600 border-blue-300 border flex items-center justify-center p-1 text-xs"
+                  className="h-10 hover:bg-blue-50 hover:border-blue-300 rounded-lg transition-all duration-200 bg-white text-blue-600 border-blue-300 border flex flex-col items-center justify-center p-1 text-[11px]"
                   onClick={() => {
                     reachGoal(GOAL_PHONE_CLICK, { source: "tariff_modal", tariff: tariff.name })
                     window.open(`tel:${CALL_PHONE_RAW}`)
                   }}
                   title={`Позвонить: ${CALL_PHONE}`}
                 >
-                  <Phone className="w-4 h-4 mr-1 text-blue-600" />
+                  <Phone className="w-3.5 h-3.5 text-blue-600 mb-0.5" />
                   <span>Звонок</span>
                 </Button>
               </div>

@@ -27,3 +27,17 @@ export function TelegramIcon({ className = "w-4 h-4", ...props }: React.SVGProps
     </svg>
   )
 }
+
+export function MaxIcon({ className = "w-4 h-4", ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M3 4h3.6l5.4 8.1L17.4 4H21v16h-3.6v-9.2L12 17.2l-5.4-6.4V20H3V4z" />
+    </svg>
+  )
+}

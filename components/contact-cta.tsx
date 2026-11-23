@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { Phone, Clock, ArrowRight } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
+import { CALL_PHONE, CALL_PHONE_RAW, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
 
 export default function ContactCTA() {
   const ctaMessage = "Здравствуйте! Хочу сдать шины на хранение в Симферополе с бесплатным вывозом. Подскажите, когда можете забрать?"
@@ -103,6 +103,25 @@ export default function ContactCTA() {
                         Позвонить: {CALL_PHONE}
                       </span>
                       <div className="absolute inset-0 -top-1 -left-1 w-4 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
+                    </a>
+                  </Button>
+
+                  {/* MAX Messenger */}
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-violet-600 hover:bg-violet-700 text-white h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  >
+                    <a
+                      href={MAX_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "contact_cta" })}
+                    >
+                      <span className="flex items-center justify-center font-medium">
+                        <MaxIcon className="w-4 h-4 mr-2" />
+                        Мессенджер MAX ({CALL_PHONE})
+                      </span>
                     </a>
                   </Button>
 

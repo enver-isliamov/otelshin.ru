@@ -2,7 +2,7 @@
 
 import { useEffect, Suspense } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
-import { YANDEX_METRIKA_ID, reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_ORDER_SUBMIT } from "@/lib/analytics"
+import { YANDEX_METRIKA_ID, reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
 
 function MetrikaRouteTracker() {
   const pathname = usePathname()
@@ -41,7 +41,17 @@ function MetrikaRouteTracker() {
         return
       }
 
-      // 2. Автоцель: переход в WhatsApp
+      // 2. Автоцель: переход в мессенджер MAX
+      if (href.includes("max.ru") || href.startsWith("max:")) {
+        reachGoal(GOAL_MAX_CLICK, {
+          href,
+          page: window.location.pathname,
+          auto_captured: true,
+        })
+        return
+      }
+
+      // 3. Автоцель: переход в WhatsApp
       if (href.includes("wa.me") || href.includes("whatsapp.com")) {
         reachGoal(GOAL_WHATSAPP_CLICK, {
           href,
@@ -51,7 +61,7 @@ function MetrikaRouteTracker() {
         return
       }
 
-      // 3. Автоцель: переход в Telegram
+      // 4. Автоцель: переход в Telegram
       if (href.includes("t.me/") || href.startsWith("tg:")) {
         reachGoal(GOAL_TELEGRAM_CLICK, {
           href,

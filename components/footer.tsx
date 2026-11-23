@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { Phone, MapPin, Clock, Circle } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
+import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
 
 export default function Footer() {
   const footerMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
@@ -80,6 +80,21 @@ export default function Footer() {
                   title="Позвонить нам"
                 >
                   {CALL_PHONE}
+                </a>
+              </li>
+
+              {/* MAX */}
+              <li className="flex items-center space-x-2">
+                <MaxIcon className="w-4 h-4 text-violet-400 flex-shrink-0" />
+                <a
+                  href={MAX_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "footer" })}
+                  className="text-gray-400 hover:text-violet-400 transition-colors"
+                  title="Мессенджер MAX"
+                >
+                  MAX: {CALL_PHONE}
                 </a>
               </li>
 

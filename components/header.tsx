@@ -4,9 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Phone, Circle } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
+import { CALL_PHONE, CALL_PHONE_RAW, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -67,6 +67,18 @@ export default function Header() {
               <span>{CALL_PHONE}</span>
             </a>
 
+            {/* MAX Messenger (связь по рабочему номеру в шапке) */}
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "header_desktop" })}
+              className="w-8 h-8 rounded-full bg-violet-600 hover:bg-violet-700 text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+              title="Мессенджер MAX (+7 979 066-20-89)"
+            >
+              <MaxIcon className="w-3.5 h-3.5" />
+            </a>
+
             {/* WhatsApp */}
             <a
               href={getWhatsAppUrl(headerMessage)}
@@ -100,7 +112,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Actions: Phone + Messengers + Booking Button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2">
             <a
               href={`tel:${CALL_PHONE_RAW}`}
               onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "header_mobile" })}
@@ -108,6 +120,18 @@ export default function Header() {
               title="Позвонить"
             >
               <Phone className="w-4 h-4" />
+            </a>
+
+            {/* MAX Mobile */}
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "header_mobile" })}
+              className="w-8 h-8 rounded-full bg-violet-600 text-white flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+              title="Мессенджер MAX"
+            >
+              <MaxIcon className="w-3.5 h-3.5" />
             </a>
 
             <a
@@ -134,9 +158,9 @@ export default function Header() {
 
             <Link
               href="/#pricing"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1.5 rounded-lg text-xs font-medium transition-all duration-300"
             >
-              Забронировать
+              Тарифы
             </Link>
           </div>
         </div>

@@ -4,9 +4,9 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Phone, MapPin, Clock } from "lucide-react"
-import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
-import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
-import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
+import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, MAX_URL, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_MAX_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/icons"
 
 export default function ContactsClientPage() {
   const contactMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
@@ -17,11 +17,23 @@ export default function ContactsClientPage() {
       title: "Телефон (звонки)",
       value: CALL_PHONE,
       link: `tel:${CALL_PHONE_RAW}`,
-      description: "Основной номер для звонков",
+      description: "Основной рабочий номер для звонков",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
       linkColor: "text-blue-600 hover:text-blue-700",
       onClick: () => reachGoal(GOAL_PHONE_CLICK, { location: "contacts_page_card" }),
+    },
+    {
+      icon: MaxIcon,
+      title: "Мессенджер MAX",
+      value: CALL_PHONE,
+      link: MAX_URL,
+      description: "Чат по рабочему номеру",
+      bgColor: "bg-violet-50",
+      iconColor: "text-violet-600",
+      linkColor: "text-violet-600 hover:text-violet-700",
+      isExternal: true,
+      onClick: () => reachGoal(GOAL_MAX_CLICK, { location: "contacts_page_card" }),
     },
     {
       icon: WhatsAppIcon,
@@ -52,20 +64,10 @@ export default function ContactsClientPage() {
       title: "Адрес",
       value: "г. Симферополь",
       link: "",
-      description: "Выезжаем по всему городу",
+      description: "Бесплатный выезд по городу",
       bgColor: "bg-purple-50",
       iconColor: "text-purple-600",
       linkColor: "text-purple-600",
-    },
-    {
-      icon: Clock,
-      title: "Режим работы",
-      value: "Ежедневно: 9:00 - 21:00",
-      link: "",
-      description: "Работаем без выходных",
-      bgColor: "bg-orange-50",
-      iconColor: "text-orange-600",
-      linkColor: "text-orange-600",
     },
   ]
 
@@ -76,7 +78,7 @@ export default function ContactsClientPage() {
         <div className="text-center mb-12 lg:mb-16">
           <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">Контакты OtelShin</h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Свяжитесь с нами любым удобным способом: по телефону или в мессенджерах WhatsApp и Telegram. 
+            Свяжитесь с нами любым удобным способом: по телефону, в мессенджере MAX, WhatsApp или Telegram. 
             Бесплатно приедем к вашему дому или офису в Симферополе и заберем шины на хранение.
           </p>
         </div>
@@ -168,6 +170,23 @@ export default function ContactsClientPage() {
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Позвонить: {CALL_PHONE}
+                </a>
+              </Button>
+
+              {/* MAX Messenger */}
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white transition-all duration-300 hover:scale-[1.02] shadow-sm"
+              >
+                <a
+                  href={MAX_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_MAX_CLICK, { location: "contacts_page_cta" })}
+                >
+                  <MaxIcon className="w-4 h-4 mr-2" />
+                  Написать в MAX ({CALL_PHONE})
                 </a>
               </Button>
 
