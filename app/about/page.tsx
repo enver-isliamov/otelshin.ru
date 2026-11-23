@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import { Users, Award, Shield, Clock, Phone, MessageCircle, Eye, Thermometer } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Users, Award, Shield, Clock, Eye, Thermometer } from "lucide-react"
+import AboutCTA from "./AboutCTA"
 
 export const metadata: Metadata = {
   title: "О компании OtelShin - Хранение шин в Симферополе | 5+ лет опыта, 100+ клиентов",
@@ -175,54 +175,7 @@ export default function AboutPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 lg:p-12 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Хотите узнать больше о OtelShin?</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Свяжитесь с нами для получения подробной консультации о наших услугах и условиях хранения шин в Симферополе
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-            >
-              <a href="tel:+79790662089">
-                <Phone className="w-4 h-4 mr-2" />
-                Позвонить сейчас
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-300 hover:scale-105"
-            >
-              <a
-                href="https://wa.me/79780703665?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D0%BE%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B8%20OtelShin%20%D0%B8%20%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%88%D0%B8%D0%BD."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Написать в WhatsApp
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-sky-500 text-sky-600 hover:bg-sky-50 transition-all duration-300 hover:scale-105 bg-transparent"
-            >
-              <a
-                href="https://t.me/EnrikeTomas?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D0%BE%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B8%20OtelShin%20%D0%B8%20%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%88%D0%B8%D0%BD."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Написать в Telegram
-              </a>
-            </Button>
-          </div>
-        </div>
+        <AboutCTA />
       </div>
     </div>
   )
