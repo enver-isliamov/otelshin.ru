@@ -1,9 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Phone, MessageCircle, Clock, ArrowRight } from "lucide-react"
+import { Phone, Clock, ArrowRight } from "lucide-react"
+import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
 
 export default function ContactCTA() {
+  const ctaMessage = "Здравствуйте! Хочу сдать шины на хранение в Симферополе с бесплатным вывозом. Подскажите, когда можете забрать?"
+
   const workSteps = [
     {
       step: "1",
@@ -38,7 +43,7 @@ export default function ContactCTA() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Готовы сдать шины на хранение?</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Свяжитесь с нами удобным способом. Поможем выбрать тариф и ответим на все вопросы.
+              Свяжитесь с нами удобным способом. Бесплатно приедем, заберем и оформим договор на месте.
             </p>
           </div>
 
@@ -82,37 +87,70 @@ export default function ContactCTA() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Свяжитесь с нами</h3>
 
                 {/* Quick Action Buttons */}
-                <div className="space-y-4 mb-6">
+                <div className="space-y-3 mb-6">
+                  {/* Phone Call */}
                   <Button
                     asChild
                     size="lg"
                     className="bg-blue-600 hover:bg-blue-700 h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
                   >
-                    <a href="tel:+79780703665">
-                      <span className="relative z-10 flex items-center justify-center">
+                    <a
+                      href={`tel:${CALL_PHONE_RAW}`}
+                      onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "contact_cta" })}
+                    >
+                      <span className="relative z-10 flex items-center justify-center font-medium">
                         <Phone className="w-4 h-4 mr-2" />
-                        Быстрый звонок
+                        Позвонить: {CALL_PHONE}
                       </span>
                       <div className="absolute inset-0 -top-1 -left-1 w-4 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:animate-shimmer"></div>
                     </a>
                   </Button>
 
+                  {/* WhatsApp */}
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white h-12 w-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  >
+                    <a
+                      href={getWhatsAppUrl(ctaMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "contact_cta" })}
+                    >
+                      <span className="flex items-center justify-center font-medium">
+                        <WhatsAppIcon className="w-5 h-5 mr-2" />
+                        Написать в WhatsApp
+                      </span>
+                    </a>
+                  </Button>
+
+                  {/* Telegram */}
                   <Button
                     asChild
                     size="lg"
                     variant="outline"
-                    className="border-green-600 text-green-600 hover:bg-green-50 h-12 w-full bg-transparent transition-all duration-300 hover:scale-105"
+                    className="border-sky-500 text-sky-600 hover:bg-sky-50 h-12 w-full bg-transparent transition-all duration-300 hover:scale-105"
                   >
-                    <a href="https://t.me/EnrikeTomas">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Написать в Telegram
+                    <a
+                      href={getTelegramUrl(ctaMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "contact_cta" })}
+                    >
+                      <span className="flex items-center justify-center font-medium">
+                        <TelegramIcon className="w-5 h-5 mr-2 text-sky-500" />
+                        Написать в Telegram
+                      </span>
                     </a>
                   </Button>
                 </div>
 
                 {/* Help Text */}
                 <div className="border-t border-gray-100 pt-4">
-                  <p className="text-center text-sm text-gray-600">Поможем выбрать тариф и рассчитаем стоимость</p>
+                  <p className="text-center text-sm text-gray-600">
+                    Поможем выбрать тариф и рассчитаем точную стоимость
+                  </p>
                 </div>
               </div>
             </div>

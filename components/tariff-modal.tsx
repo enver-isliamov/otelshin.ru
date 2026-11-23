@@ -1,12 +1,14 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { X, Phone, MessageCircle, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle, Sparkles } from "lucide-react"
+import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK, GOAL_ORDER_SUBMIT } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
 
 interface TariffModalProps {
   isOpen: boolean
@@ -46,6 +48,15 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
     })
   }
 
+  const getMessengerText = () => {
+    const tariffInfo = tariff ? `тариф "${tariff.name}" (${tariff.price})` : "сезонное хранение шин"
+    let text = `Здравствуйте! Меня интересует ${tariffInfo} в Симферополе.`
+    if (formData.name || formData.phone) {
+      text += ` Мои контакты: ${formData.name || ""} ${formData.phone || ""}`.trim()
+    }
+    return text
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -67,6 +78,11 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
       const result = await response.json()
 
       if (response.ok && result.success) {
+        reachGoal(GOAL_ORDER_SUBMIT, {
+          tariff: tariff?.name,
+          price: tariff?.price,
+        })
+
         setSubmitStatus({
           type: result.warning ? "warning" : "success",
           message: result.message,
@@ -88,7 +104,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
       console.error("Error submitting form:", error)
       setSubmitStatus({
         type: "error",
-        message: "Произошла ошибка соединения. Попробуйте позвонить нам: +7 (978) 070-36-65",
+        message: `Произошла ошибка соединения. Попробуйте позвонить нам напрямую: ${CALL_PHONE}`,
       })
     }
 
@@ -138,64 +154,45 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">Заявка отправлена!</h3>
             <p className="text-gray-600 text-center text-sm leading-relaxed">{submitStatus.message}</p>
-            <div className="mt-4 flex items-center text-xs text-gray-500">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Окно закроется автоматически
+            <div className="mt-4 flex items-center text-xs text-green-600 font-medium">
+              <CheckCircle className="w-4 h-4 mr-1" />
+              Скоро свяжемся с вами
             </div>
           </div>
         )}
 
-        {/* Header */}
-        <div className="p-4 pb-2">
-          <div className="text-center">
-            <div className="inline-flex items-center px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium mb-2">
-              Выбранный тариф
+        {/* Content */}
+        <div className="p-6">
+          {/* Header */}
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl mb-3 shadow-lg">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-1">{tariff.name}</h3>
-            <div className="flex items-center justify-center mb-1">
-              <span className="text-xl font-bold text-blue-600">{tariff.price}</span>
-              <span className="text-gray-500 ml-1 text-sm">₽/месяц</span>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">Бронирование тарифа</h3>
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-2.5 mb-2">
+              <div className="font-semibold text-blue-600 text-sm">{tariff.name}</div>
+              <div className="text-base font-bold text-gray-900">{tariff.price}</div>
             </div>
-            <p className="text-xs text-gray-600 bg-gray-50 rounded-lg px-2 py-1">{tariff.description}</p>
+            <p className="text-gray-600 text-xs">{tariff.description}</p>
           </div>
-        </div>
 
-        
-
-        {/* Tariff Card */}
-
-        {/* Status Message */}
-        {submitStatus.type && submitStatus.type !== "success" && (
-          <div className="mx-4 mb-3">
-            <div
-              className={`p-3 rounded-lg flex items-start space-x-2 ${
-                submitStatus.type === "warning"
-                  ? "bg-amber-50 border border-amber-200"
-                  : "bg-red-50 border border-red-200"
-              }`}
-            >
-              <AlertTriangle
-                className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
-                  submitStatus.type === "warning" ? "text-amber-600" : "text-red-600"
-                }`}
-              />
-              <div>
-                <p
-                  className={`text-xs font-medium ${
-                    submitStatus.type === "warning" ? "text-amber-800" : "text-red-800"
-                  }`}
-                >
-                  {submitStatus.message}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Form */}
-        <div className="px-4 pb-3">
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-4">
+            {/* Error/Warning Message */}
+            {submitStatus.type && submitStatus.type !== "success" && (
+              <div
+                className={`p-3 rounded-lg flex items-center text-xs ${
+                  submitStatus.type === "warning"
+                    ? "bg-amber-50 text-amber-700 border border-amber-200"
+                    : "bg-red-50 text-red-700 border border-red-200"
+                }`}
+              >
+                <AlertTriangle className="w-4 h-4 mr-2 flex-shrink-0" />
+                <span>{submitStatus.message}</span>
+              </div>
+            )}
+
+            <div className="space-y-3">
               <div>
                 <Label htmlFor="modal-name" className="text-gray-700 font-medium text-xs mb-1 block">
                   Ваше имя
@@ -222,7 +219,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
                   name="phone"
                   type="tel"
                   required
-                  placeholder="+7 (999) 123-45-67"
+                  placeholder="+7 (___) ___-__-__"
                   value={formData.phone}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -250,35 +247,64 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
               )}
             </Button>
 
-            {/* Alternative Contact Methods */}
+            {/* Alternative Contact Methods with Prefilled Text */}
             <div className="space-y-3">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-100"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-3 bg-white text-gray-500 text-xs">или свяжитесь напрямую</span>
+                  <span className="px-3 bg-white text-gray-500 text-xs">или напишите / позвоните нам</span>
                 </div>
               </div>
 
-              <div className="flex gap-2 justify-center">
+              <div className="grid grid-cols-3 gap-2">
+                {/* WhatsApp with prefilled message */}
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="w-12 h-10 hover:bg-blue-50 hover:border-blue-300 rounded-lg transition-all duration-200 bg-transparent text-blue-600 border-blue-300 border p-0"
-                  onClick={() => window.open("tel:+79780703665")}
+                  className="h-10 hover:bg-emerald-50 hover:border-emerald-300 rounded-lg transition-all duration-200 bg-white text-emerald-600 border-emerald-300 border flex items-center justify-center p-1 text-xs"
+                  onClick={() => {
+                    reachGoal(GOAL_WHATSAPP_CLICK, { source: "tariff_modal", tariff: tariff.name })
+                    window.open(getWhatsAppUrl(getMessengerText()), "_blank")
+                  }}
+                  title="Написать в WhatsApp"
                 >
-                  <Phone className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4 mr-1 text-emerald-600" />
+                  <span>WhatsApp</span>
                 </Button>
+
+                {/* Telegram with prefilled message */}
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="w-12 h-10 hover:bg-green-50 hover:border-green-300 rounded-lg transition-all duration-200 text-green-600 bg-green-50 border-green-300 border p-0"
-                  onClick={() => window.open("https://t.me/EnrikeTomas")}
+                  className="h-10 hover:bg-sky-50 hover:border-sky-300 rounded-lg transition-all duration-200 text-sky-600 bg-white border-sky-300 border flex items-center justify-center p-1 text-xs"
+                  onClick={() => {
+                    reachGoal(GOAL_TELEGRAM_CLICK, { source: "tariff_modal", tariff: tariff.name })
+                    window.open(getTelegramUrl(getMessengerText()), "_blank")
+                  }}
+                  title="Написать в Telegram"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <TelegramIcon className="w-4 h-4 mr-1 text-sky-600" />
+                  <span>Telegram</span>
+                </Button>
+
+                {/* Direct Phone Call */}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="h-10 hover:bg-blue-50 hover:border-blue-300 rounded-lg transition-all duration-200 bg-white text-blue-600 border-blue-300 border flex items-center justify-center p-1 text-xs"
+                  onClick={() => {
+                    reachGoal(GOAL_PHONE_CLICK, { source: "tariff_modal", tariff: tariff.name })
+                    window.open(`tel:${CALL_PHONE_RAW}`)
+                  }}
+                  title={`Позвонить: ${CALL_PHONE}`}
+                >
+                  <Phone className="w-4 h-4 mr-1 text-blue-600" />
+                  <span>Звонок</span>
                 </Button>
               </div>
             </div>
@@ -287,7 +313,7 @@ export default function TariffModal({ isOpen, onClose, tariff }: TariffModalProp
           {/* Privacy Notice */}
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-400 leading-relaxed">
-              Нажимая "Оформить заявку", вы соглашаетесь с{" "}
+              Нажимая &quot;Оформить заявку&quot;, вы соглашаетесь с{" "}
               <span className="text-blue-500 hover:text-blue-600 cursor-pointer">обработкой персональных данных</span>
             </p>
           </div>

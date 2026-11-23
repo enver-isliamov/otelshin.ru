@@ -1,9 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { Phone, Mail, MapPin, Clock, Circle } from "lucide-react"
+import { Phone, MapPin, Clock, Circle } from "lucide-react"
+import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
 
 export default function Footer() {
+  const footerMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -24,15 +29,15 @@ export default function Footer() {
                 <span className="text-white">Shin</span>
               </span>
             </div>
-            <p className="text-gray-400 mb-4">
-              Профессиональное хранение шин в Симферополе с современной системой управления
+            <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+              Профессиональное хранение шин и дисков в Симферополе с бесплатным вывозом от дома или офиса.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Навигация</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                   Главная
@@ -49,6 +54,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/dogovor" className="text-gray-400 hover:text-white transition-colors">
+                  Договор
+                </Link>
+              </li>
+              <li>
                 <Link href="/contacts" className="text-gray-400 hover:text-white transition-colors">
                   Контакты
                 </Link>
@@ -59,24 +69,56 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Контакты</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm">
+              {/* Phone */}
               <li className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-blue-400" />
-                <a href="tel:+79790662089" className="text-gray-400 hover:text-white">
-                  +7 (979) 066-20-89
+                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <a
+                  href={`tel:${CALL_PHONE_RAW}`}
+                  onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "footer" })}
+                  className="text-gray-400 hover:text-white transition-colors"
+                  title="Позвонить нам"
+                >
+                  {CALL_PHONE}
                 </a>
               </li>
+
+              {/* WhatsApp */}
               <li className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <a href="https://t.me/EnrikeTomas" className="text-gray-400 hover:text-white">
-                  @EnrikeTomas
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <a
+                  href={getWhatsAppUrl(footerMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "footer" })}
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
+                  title="WhatsApp"
+                >
+                  WhatsApp: {MESSENGER_PHONE}
                 </a>
               </li>
+
+              {/* Telegram */}
+              <li className="flex items-center space-x-2">
+                <TelegramIcon className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                <a
+                  href={getTelegramUrl(footerMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "footer" })}
+                  className="text-gray-400 hover:text-sky-400 transition-colors"
+                  title="Telegram"
+                >
+                  Telegram: @EnrikeTomas
+                </a>
+              </li>
+
+              {/* Location */}
               <li className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-blue-400 mt-1" />
+                <MapPin className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
                 <div className="text-gray-400">
                   <p>г. Симферополь</p>
-                  <p className="text-xs">Выезжаем по всему городу</p>
+                  <p className="text-xs text-gray-500">Бесплатный выезд по всему городу</p>
                 </div>
               </li>
             </ul>
@@ -85,18 +127,18 @@ export default function Footer() {
           {/* Working Hours */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Режим работы</h3>
-            <div className="flex items-start space-x-2">
-              <Clock className="w-4 h-4 text-blue-400 mt-1" />
+            <div className="flex items-start space-x-2 text-sm">
+              <Clock className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
               <div className="text-gray-400">
                 <p>Ежедневно: 9:00 - 21:00</p>
-                <p className="text-xs">Всегда на связи</p>
+                <p className="text-xs text-gray-500 mt-1">Всегда на связи в мессенджерах</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 OtelShin. Все права защищены.</p>
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>&copy; {new Date().getFullYear()} OtelShin. Хранение шин в Симферополе. Все права защищены.</p>
         </div>
       </div>
 

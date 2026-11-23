@@ -4,9 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Phone, Circle } from "lucide-react"
+import { CALL_PHONE, CALL_PHONE_RAW, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const headerMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -29,7 +34,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
               Главная
             </Link>
@@ -42,39 +47,97 @@ export default function Header() {
             <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">
               О нас
             </Link>
-
-            {/* NEW: ссылка на страницу договора */}
             <Link href="/dogovor" className="text-gray-700 hover:text-blue-600 transition-colors">
               Договор
             </Link>
-
             <Link href="/contacts" className="text-gray-700 hover:text-blue-600 transition-colors">
               Контакты
             </Link>
           </nav>
 
-          {/* Phone and CTA - Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a href="tel:+79790662089" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-              <Phone className="w-4 h-4" />
-              <span>+7 (979) 066-20-89</span>
+          {/* Phone, Messengers and CTA - Desktop */}
+          <div className="hidden md:flex items-center space-x-3">
+            <a
+              href={`tel:${CALL_PHONE_RAW}`}
+              onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "header_desktop" })}
+              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm"
+              title="Позвонить в OtelShin"
+            >
+              <Phone className="w-4 h-4 text-blue-600" />
+              <span>{CALL_PHONE}</span>
             </a>
-           <Link 
-  href="/#pricing"
-  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center"
->
-  Забронировать
-</Link>
-            </div>
 
-          {/* Mobile CTA Button */}
-          <div className="md:hidden">
-            <Link 
-  href="/#pricing"
-  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300"
->
-  Забронировать
-</Link>
+            {/* WhatsApp */}
+            <a
+              href={getWhatsAppUrl(headerMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "header_desktop" })}
+              className="w-8 h-8 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+              title="Написать в WhatsApp (+7 978 070-36-65)"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+            </a>
+
+            {/* Telegram */}
+            <a
+              href={getTelegramUrl(headerMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "header_desktop" })}
+              className="w-8 h-8 rounded-full bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center transition-all hover:scale-110 shadow-sm"
+              title="Написать в Telegram (@EnrikeTomas / +7 978 070-36-65)"
+            >
+              <TelegramIcon className="w-4 h-4" />
+            </a>
+
+            <Link
+              href="/#pricing"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center shadow-sm text-sm"
+            >
+              Забронировать
+            </Link>
+          </div>
+
+          {/* Mobile Actions: Phone + Messengers + Booking Button */}
+          <div className="md:hidden flex items-center space-x-2">
+            <a
+              href={`tel:${CALL_PHONE_RAW}`}
+              onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "header_mobile" })}
+              className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center transition-transform active:scale-95"
+              title="Позвонить"
+            >
+              <Phone className="w-4 h-4" />
+            </a>
+
+            <a
+              href={getWhatsAppUrl(headerMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "header_mobile" })}
+              className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+              title="WhatsApp"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+            </a>
+
+            <a
+              href={getTelegramUrl(headerMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "header_mobile" })}
+              className="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+              title="Telegram"
+            >
+              <TelegramIcon className="w-4 h-4" />
+            </a>
+
+            <Link
+              href="/#pricing"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300"
+            >
+              Забронировать
+            </Link>
           </div>
         </div>
       </div>

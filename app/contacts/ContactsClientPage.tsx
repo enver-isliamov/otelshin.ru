@@ -3,52 +3,49 @@
 import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Phone, MapPin, Clock, MessageCircle, Send } from "lucide-react"
+import { Phone, MapPin, Clock } from "lucide-react"
+import { CALL_PHONE, CALL_PHONE_RAW, MESSENGER_PHONE, getWhatsAppUrl, getTelegramUrl } from "@/lib/contacts"
+import { reachGoal, GOAL_PHONE_CLICK, GOAL_WHATSAPP_CLICK, GOAL_TELEGRAM_CLICK } from "@/lib/analytics"
+import { WhatsAppIcon, TelegramIcon } from "@/components/icons"
 
 export default function ContactsClientPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Contact form submitted:", formData)
-    alert("Сообщение отправлено! Мы свяжемся с вами в ближайшее время.")
-    setFormData({ name: "", phone: "", message: "" })
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const contactMessage = "Здравствуйте! Хочу узнать про сезонное хранение шин в Симферополе."
 
   const contactMethods = [
     {
       icon: Phone,
-      title: "Телефон",
-      value: "+7 (979) 066-20-89",
-      link: "tel:+79790662089",
-      description: "Всегда на связи",
+      title: "Телефон (звонки)",
+      value: CALL_PHONE,
+      link: `tel:${CALL_PHONE_RAW}`,
+      description: "Основной номер для звонков",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
       linkColor: "text-blue-600 hover:text-blue-700",
+      onClick: () => reachGoal(GOAL_PHONE_CLICK, { location: "contacts_page_card" }),
     },
     {
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
+      title: "WhatsApp",
+      value: MESSENGER_PHONE,
+      link: getWhatsAppUrl(contactMessage),
+      description: "Консультация и бронирование",
+      bgColor: "bg-emerald-50",
+      iconColor: "text-emerald-600",
+      linkColor: "text-emerald-600 hover:text-emerald-700",
+      isExternal: true,
+      onClick: () => reachGoal(GOAL_WHATSAPP_CLICK, { location: "contacts_page_card" }),
+    },
+    {
+      icon: TelegramIcon,
       title: "Telegram",
       value: "@EnrikeTomas",
-      link: "https://t.me/EnrikeTomas",
+      link: getTelegramUrl(contactMessage),
       description: "Быстрые ответы в мессенджере",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
-      linkColor: "text-green-600 hover:text-green-700",
+      bgColor: "bg-sky-50",
+      iconColor: "text-sky-600",
+      linkColor: "text-sky-600 hover:text-sky-700",
+      isExternal: true,
+      onClick: () => reachGoal(GOAL_TELEGRAM_CLICK, { location: "contacts_page_card" }),
     },
     {
       icon: MapPin,
@@ -58,14 +55,14 @@ export default function ContactsClientPage() {
       description: "Выезжаем по всему городу",
       bgColor: "bg-purple-50",
       iconColor: "text-purple-600",
-      linkColor: "text-purple-600 hover:text-purple-700",
+      linkColor: "text-purple-600",
     },
     {
       icon: Clock,
       title: "Режим работы",
       value: "Ежедневно: 9:00 - 21:00",
       link: "",
-      description: "Работаем без выходных для вашего удобства",
+      description: "Работаем без выходных",
       bgColor: "bg-orange-50",
       iconColor: "text-orange-600",
       linkColor: "text-orange-600",
@@ -79,38 +76,43 @@ export default function ContactsClientPage() {
         <div className="text-center mb-12 lg:mb-16">
           <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">Контакты OtelShin</h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Свяжитесь с нами любым удобным способом. Мы всегда готовы ответить на ваши вопросы и помочь с выбором услуг
-            по хранению шин в Симферополе.
+            Свяжитесь с нами любым удобным способом: по телефону или в мессенджерах WhatsApp и Telegram. 
+            Бесплатно приедем к вашему дому или офису в Симферополе и заберем шины на хранение.
           </p>
         </div>
 
         {/* Quick Contact Methods */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12 lg:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-12 lg:mb-16">
           {contactMethods.map((method, index) => (
             <div
               key={index}
-              className={`${method.bgColor} rounded-xl p-4 lg:p-6 text-center hover:shadow-lg transition-all duration-300`}
+              className={`${method.bgColor} rounded-xl p-4 lg:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-between`}
             >
-              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                <method.icon className={`w-6 h-6 ${method.iconColor}`} />
+              <div>
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <method.icon className={`w-6 h-6 ${method.iconColor}`} />
+                </div>
+                <h2 className="font-semibold text-gray-900 mb-2">{method.title}</h2>
+                {method.link ? (
+                  <a
+                    href={method.link}
+                    target={method.isExternal ? "_blank" : undefined}
+                    rel={method.isExternal ? "noopener noreferrer" : undefined}
+                    onClick={method.onClick}
+                    className={`font-medium ${method.linkColor} block mb-2 break-words`}
+                  >
+                    {method.value}
+                  </a>
+                ) : (
+                  <p className="font-medium text-gray-900 mb-2">{method.value}</p>
+                )}
               </div>
-              <h2 className="font-semibold text-gray-900 mb-2">{method.title}</h2>
-              {method.link ? (
-                <a href={method.link} className={`font-medium ${method.linkColor} block mb-2`}>
-                  {method.value}
-                </a>
-              ) : (
-                <p className="font-medium text-gray-900 mb-2">{method.value}</p>
-              )}
-              <p className="text-xs text-gray-600">{method.description}</p>
+              <p className="text-xs text-gray-600 mt-2">{method.description}</p>
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Contact Form */}
-         
-
           {/* Additional Info */}
           <div className="space-y-6">
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 lg:p-8">
@@ -134,40 +136,75 @@ export default function ContactsClientPage() {
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  Более 100 довольных клиентов
+                  Более 100 довольных клиентов в Симферополе
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-indigo-600 rounded-full mr-3"></div>
-                  5+ лет опыта в сфере хранения шин
+                  Официальный договор ответственного хранения
                 </li>
               </ul>
             </div>
+          </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Быстрая связь с OtelShin</h3>
-              <div className="space-y-3">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105"
+          {/* Quick Connect Box */}
+          <div className="bg-white rounded-xl p-6 lg:p-8 shadow-md border border-gray-100 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Быстрая связь с OtelShin</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                Выберите удобный канал связи. Мы оперативно ответим и согласуем время бесплатного забора шин.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {/* Call */}
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02] shadow-sm"
+              >
+                <a
+                  href={`tel:${CALL_PHONE_RAW}`}
+                  onClick={() => reachGoal(GOAL_PHONE_CLICK, { location: "contacts_page_cta" })}
                 >
-                  <a href="tel:+79790662089">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Позвонить сейчас
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="w-full border-green-600 text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-105 bg-transparent"
+                  <Phone className="w-4 h-4 mr-2" />
+                  Позвонить: {CALL_PHONE}
+                </a>
+              </Button>
+
+              {/* WhatsApp */}
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-300 hover:scale-[1.02] shadow-sm"
+              >
+                <a
+                  href={getWhatsAppUrl(contactMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_WHATSAPP_CLICK, { location: "contacts_page_cta" })}
                 >
-                  <a href="https://t.me/EnrikeTomas">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Написать в Telegram
-                  </a>
-                </Button>
-              </div>
+                  <WhatsAppIcon className="w-4 h-4 mr-2" />
+                  Написать в WhatsApp ({MESSENGER_PHONE})
+                </a>
+              </Button>
+
+              {/* Telegram */}
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full border-sky-500 text-sky-600 hover:bg-sky-50 transition-all duration-300 hover:scale-[1.02] bg-white"
+              >
+                <a
+                  href={getTelegramUrl(contactMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => reachGoal(GOAL_TELEGRAM_CLICK, { location: "contacts_page_cta" })}
+                >
+                  <TelegramIcon className="w-4 h-4 mr-2 text-sky-500" />
+                  Написать в Telegram (@EnrikeTomas)
+                </a>
+              </Button>
             </div>
           </div>
         </div>
