@@ -1,170 +1,10 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { Calendar, User, Clock, ArrowLeft } from "lucide-react"
+import { Calendar, User, Clock, ArrowLeft, Share2 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import TariffSelector from "@/components/tariff-selector"
-
-// Данные статей (в реальном проекте это может быть база данных)
-const articles = {
-  "kak-pravilno-hranit-shiny": {
-    title: "Как правильно хранить шины: полное руководство",
-    content: `
-      <h2>Основные правила хранения шин</h2>
-      <p>Правильное хранение шин - это залог их долговечности и безопасности. Неправильное хранение может привести к деформации, растрескиванию и потере эксплуатационных свойств.</p>
-      
-      <h3>1. Подготовка к хранению</h3>
-      <p>Перед помещением шин на хранение необходимо:</p>
-      <ul>
-        <li>Тщательно очистить от грязи и камней</li>
-        <li>Проверить давление (для шин с дисками)</li>
-        <li>Обработать специальными составами</li>
-      </ul>
-
-      <h3>2. Условия хранения</h3>
-      <p>Идеальные условия для хранения шин:</p>
-      <ul>
-        <li>Температура: от -30°C до +35°C</li>
-        <li>Влажность: 50-80%</li>
-        <li>Отсутствие прямых солнечных лучей</li>
-        <li>Хорошая вентиляция</li>
-      </ul>
-
-      <h3>3. Способы хранения</h3>
-      <p>В зависимости от типа шин выбирается способ хранения:</p>
-      <ul>
-        <li><strong>Шины без дисков:</strong> вертикально, с периодическим поворотом</li>
-        <li><strong>Шины с дисками:</strong> горизонтально или подвешенными</li>
-      </ul>
-    `,
-    date: "2024-01-15",
-    author: "Эксперт OtelShin",
-    readTime: "5 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  "kogda-menyat-shiny-v-krymu": {
-    title: "Когда менять летние шины на зимние в Крыму",
-    content: `
-      <h2>Особенности климата Крыма</h2>
-      <p>Крым имеет умеренно-континентальный климат с мягкой зимой, что создает особые условия для использования автомобильных шин.</p>
-      
-      <h3>Оптимальные сроки замены</h3>
-      <p>В Симферополе и других городах Крыма рекомендуется:</p>
-      <ul>
-        <li><strong>Переход на зимние шины:</strong> конец ноября - начало декабря</li>
-        <li><strong>Переход на летние шины:</strong> середина - конец марта</li>
-      </ul>
-
-      <h3>Факторы, влияющие на выбор времени</h3>
-      <ul>
-        <li>Среднесуточная температура ниже +7°C</li>
-        <li>Прогноз погоды на ближайшие недели</li>
-        <li>Интенсивность использования автомобиля</li>
-      </ul>
-    `,
-    date: "2024-01-10",
-    author: "Эксперт OtelShin",
-    readTime: "3 мин",
-    image: "https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  "priznaki-iznosa-shin": {
-    title: "5 признаков того, что шины пора менять",
-    content: `
-      <h2>Когда пора менять шины?</h2>
-      <p>Своевременная замена шин - это вопрос безопасности. Изношенные шины увеличивают тормозной путь и снижают управляемость автомобиля.</p>
-      
-      <h3>1. Глубина протектора</h3>
-      <p>Минимально допустимая глубина протектора:</p>
-      <ul>
-        <li>Летние шины: 1.6 мм</li>
-        <li>Зимние шины: 4 мм</li>
-      </ul>
-
-      <h3>2. Неравномерный износ</h3>
-      <p>Признаки проблем с подвеской или развал-схождением.</p>
-
-      <h3>3. Трещины и порезы</h3>
-      <p>Видимые повреждения боковины или протектора.</p>
-
-      <h3>4. Возраст шин</h3>
-      <p>Рекомендуется замена через 6-10 лет независимо от износа.</p>
-
-      <h3>5. Вибрация при движении</h3>
-      <p>Может указывать на деформацию или дисбаланс.</p>
-    `,
-    date: "2024-01-05",
-    author: "Эксперт OtelShin",
-    readTime: "4 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-
-  "zabota-o-shinah": {
-    "title": "Сезонное хранение шин в Симферополе | Отель для шин OtelShin.ru",
-    "content": `
-      <h1>Сезонное хранение шин – забота о ваших колесах в OtelShin.ru</h1>
-      <p>Каждый год дважды автовладельцы сталкиваются с одной и той же проблемой: куда деть сезонный комплект шин? Хранить их на балконе, в кладовке или гараже – не лучшее решение. Лишний вес, занимающее место, риск порчи резины – все это доставляет неудобства. Но есть идеальный выход – <strong>"отель для шин" от OtelShin.ru</strong>!</p>
-      <p>Мы предлагаем профессиональную услугу сезонного хранения шин, которая сэкономит ваше время, место и сохранит качество покрышек на долгие годы.</p>
-      
-      <h2>Почему домашнее хранение – плохая идея?</h2>
-      <p>Многие думают, что для хранения шин достаточно найти темный угол. Однако неправильные условия могут нанести резине непоправимый ущерб.</p>
-      <ul>
-        <li><strong>Перепады температур:</strong> На балконе или в неотапливаемом гараже шины постоянно подвергаются воздействию холода и жары, что приводит к растрескиванию резины.</li>
-        <li><strong>Влажность и солнце:</strong> Влага вызывает коррозию металлических дисков и расслоение каркаса шин. Ультрафиолетовые лучи разрушают резиновую смесь, делая ее хрупкой.</li>
-        <li><strong>Неправильное положение:</strong> Хранение шин без дисков "стопкой" деформирует их, а на дисках в вертикальном положении – приводит к овализации колеса.</li>
-        <li><strong>Место в доме:</strong> Комплект шин с дисками – это громоздкий и тяжелый груз, который занимает много полезного пространства в квартире или доме.</li>
-      </ul>
-
-      <h2>"Отель для шин" от OtelShin.ru – идеальное решение!</h2>
-      <p>Передав шины на хранение нам, вы получаете гарантию того, что с ними все будет в порядке. Мы создали идеальные условия, как если бы вы хранили их в климат-контролируемом складе премиум-класса.</p>
-      <p><strong>Наши преимущества:</strong></p>
-      <ul>
-        <li><strong>Правильные условия:</strong> Мы храним шины в сухом, темном, проветриваемом помещении с постоянной температурой и оптимальным уровнем влажности.</li>
-        <li><strong>Экономия места:</strong> Вы освобождаете до 1 кубометра полезного пространства в своем доме.</li>
-        <li><strong>Безопасность:</strong> Ваши шины под надежной охраной, вам не стоит беспокоиться об их сохранности.</li>
-        <li><strong>Дополнительный сервис:</strong> Прием шин на хранение включает их мойку, сушку и маркировку для сохранения комплектности.</li>
-        <li><strong>Удобство:</strong> Вы просто привозите шины к нам, а забираете их готовыми к новому сезону.</li>
-      </ul>
-
-      <h2>Как проходит процесс хранения шин?</h2>
-      <p>Мы сделали процесс максимально простым и прозрачным для вас. Всего три шага:</p>
-      <ul>
-        <li><strong>1. Привоз шин:</strong> Вы доставляете комплект шин в наш сервис. Мы принимаем их, проводим визуальный осмотр, моем, сушим и маркируем каждую покрышку, чтобы не перепутать при выдаче.</li>
-        <li><strong>2. Профессиональное хранение:</strong> Ваши шины размещаются на нашем специализированном складе. Шины без дисков хранятся вертикально, а на дисках – в горизонтальном положении (стопкой до 4 шт.), как того требует технология.</li>
-        <li><strong>3. Получение шин:</strong> С наступлением нового сезона вы приезжаете к нам и забираете свой комплект. Шины чистые, в идеальном состоянии и готовы к установке на автомобиль.</li>
-      </ul>
-
-      <h2>Условия и стоимость хранения шин</h2>
-      <p>Мы предлагаем гибкие тарифы, которые зависят от радиуса шин и того, на дисках они или без.</p>
-      <ul>
-        <li><strong>Хранение шин без дисков (R13-R15):</strong> от 500 руб..</li>
-        <li><strong>Хранение шин на дисках (R13-R15):</strong> от 600 руб.</li>
-        <li><strong>Хранение шин без дисков (R16-R19):</strong> от 600 руб.</li>
-        <li><strong>Хранение шин на дисках (R16-R19):</strong> от 700 руб.</li>
-        <li><strong>Хранение шин без дисков (R20 и выше):</strong> от 700 руб.</li>
-        <li><strong>Хранение шин на дисках (R16 и выше):</strong> от 800 руб./li>
-      </ul>
-      <p><em>Точную стоимость для вашего комплекта вы можете уточнить у наших менеджеров по телефону или на месте.</em></p>
-
-      <h3>Часто задаваемые вопросы (FAQ)</h3>
-      <p><strong>В: Что нужно сделать перед сдачей шин на хранение?</strong></p>
-      <p><strong>О:</strong> Ничего особенного! Просто привезите их к нам. Мы сами проведем мойку и осмотр. Если на шинах есть камни или другие инородные предметы, мы их удалим.</p>
-      <p><strong>В: Вы гарантируете сохранность комплектности шин?</strong></p>
-      <p><strong>О:</strong> Да, конечно. Каждому комплекту присваивается уникальный номер, и все 4 покрышки хранятся вместе до вашего приезда.</p>
-      <p><strong>В: Можно ли хранить шины с дефектами (прокол, порез)?</strong></p>
-      <p><strong>О:</strong> Мы принимаем на хранение шины с небольшими дефектами, но настоятельно рекомендуем перед сдачей отремонтировать их, чтобы дефект не усугубился за время хранения.</p>
-
-      <h2>Закажите хранение шин в OtelShin.ru уже сегодня!</h2>
-      <p>Не рискуйте своими шинами и свободным местом в доме. Доверьте их профессионалам! В "отеле для шин" OtelShin.ru ваши покрышки будут в полной безопасности, а вы получите спокойствие и уверенность, что к новому сезону они будут как новые.</p>
-      <p><strong>Свяжитесь с нами прямо сейчас, чтобы забронировать место и уточнить все детали!</strong></p>
-      <p>[Кнопка: Заказать хранение] или [Кнопка: Рассчитать стоимость]</p>
-    
-    `,
-    date: "2024-01-05",
-    author: "Эксперт OtelShin",
-    readTime: "4 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-}
+import { articlesData } from "@/lib/articles-data"
 
 type ArticleParams = {
   slug: string
@@ -172,7 +12,7 @@ type ArticleParams = {
 
 export async function generateMetadata({ params }: { params: Promise<ArticleParams> }): Promise<Metadata> {
   const { slug } = await params
-  const article = articles[slug as keyof typeof articles]
+  const article = articlesData[slug]
 
   if (!article) {
     return {
@@ -181,36 +21,91 @@ export async function generateMetadata({ params }: { params: Promise<ArticlePara
   }
 
   return {
-    title: `${article.title} | OtelShin`,
-    description: article.content.replace(/<[^>]*>/g, '').substring(0, 160),
+    title: `${article.title} | OtelShin Симферополь`,
+    description: article.description || article.excerpt,
+    alternates: {
+      canonical: `https://otelshin.ru/articles/${article.slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: "article",
+      url: `https://otelshin.ru/articles/${article.slug}`,
+      images: [
+        {
+          url: article.image,
+          width: 800,
+          height: 500,
+          alt: article.title,
+        },
+      ],
+    },
   }
+}
+
+export async function generateStaticParams() {
+  return Object.keys(articlesData).map((slug) => ({ slug }))
 }
 
 export default async function ArticlePage({ params }: { params: Promise<ArticleParams> }) {
   const { slug } = await params
-  const article = articles[slug as keyof typeof articles]
+  const article = articlesData[slug]
 
   if (!article) {
     notFound()
   }
 
+  // Schema.org Article metadata for Google, Yandex and AI indexing
+  const schemaArticle = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    image: article.image,
+    author: {
+      "@type": "Organization",
+      name: "OtelShin",
+      url: "https://otelshin.ru",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "OtelShin",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://otelshin.ru/placeholder-logo.png",
+      },
+    },
+    datePublished: article.date,
+    dateModified: article.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://otelshin.ru/articles/${article.slug}`,
+    },
+  }
+
   return (
-    <div className="py-12 lg:py-20">
+    <div className="py-10 lg:py-16 bg-white">
+      {/* Schema.org Article JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaArticle) }}
+      />
+
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Back Button */}
-          <div className="mb-8">
+        <div className="max-w-3xl mx-auto">
+          {/* Breadcrumb / Back Button */}
+          <div className="mb-6">
             <Link href="/articles">
-              <Button variant="outline" className="mb-4">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Назад к статьям
+              <Button variant="outline" size="sm" className="rounded-xl border-gray-200 text-gray-700 hover:bg-gray-50">
+                <ArrowLeft className="w-4 h-4 mr-1.5" />
+                Все статьи
               </Button>
             </Link>
           </div>
 
           {/* Article Header */}
           <div className="mb-8">
-            <div className="aspect-video bg-gray-200 rounded-xl overflow-hidden mb-6">
+            <div className="aspect-[16/9] bg-gray-100 rounded-2xl overflow-hidden mb-6 shadow-sm border border-gray-100">
               <img
                 src={article.image}
                 alt={article.title}
@@ -218,29 +113,41 @@ export default async function ArticlePage({ params }: { params: Promise<ArticleP
               />
             </div>
 
-            <div className="flex items-center text-sm text-gray-500 mb-4">
-              <Calendar className="w-4 h-4 mr-2" />
-              <span>{new Date(article.date).toLocaleDateString('ru-RU')}</span>
-              <span className="mx-2">•</span>
-              <User className="w-4 h-4 mr-1" />
-              <span>{article.author}</span>
-              <span className="mx-2">•</span>
-              <Clock className="w-4 h-4 mr-1" />
-              <span>{article.readTime}</span>
+            <div className="flex flex-wrap items-center text-xs sm:text-sm text-gray-500 mb-4 gap-y-2">
+              <div className="flex items-center">
+                <Calendar className="w-4 h-4 mr-1 text-gray-400" />
+                <span>{new Date(article.date).toLocaleDateString("ru-RU")}</span>
+              </div>
+              <span className="mx-2.5 text-gray-300">•</span>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 mr-1 text-gray-400" />
+                <span>{article.readTime}</span>
+              </div>
+              <span className="mx-2.5 text-gray-300">•</span>
+              <div className="flex items-center">
+                <User className="w-4 h-4 mr-1 text-gray-400" />
+                <span>{article.author}</span>
+              </div>
             </div>
 
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
               {article.title}
             </h1>
           </div>
 
-          {/* Article Content */}
-          <div className="prose prose-lg max-w-none mb-12">
-            <div dangerouslySetInnerHTML={{ __html: article.content }} />
-          </div>
+          {/* Article HTML Content */}
+          <div
+            className="prose prose-blue prose-base sm:prose-lg max-w-none mb-12 text-gray-700 leading-relaxed 
+              prose-headings:font-bold prose-headings:text-gray-900 prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+              prose-h3:text-lg sm:prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+              prose-ul:my-4 prose-li:my-1.5 prose-strong:text-gray-900"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
 
-          {/* Tariff Selector */}
-          <TariffSelector />
+          {/* Tariff Selector & CTA */}
+          <div className="pt-8 border-t border-gray-100">
+            <TariffSelector />
+          </div>
         </div>
       </div>
     </div>

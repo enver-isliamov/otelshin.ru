@@ -10,11 +10,15 @@ import MetrikaTracker from "@/components/metrika-tracker"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  title: "OtelShin - Надёжное хранение шин в Симферополе | Комфортная цена",
+  metadataBase: new URL("https://otelshin.ru"),
+  title: {
+    default: "OtelShin — Хранение шин в Симферополе с бесплатным забором от подъезда",
+    template: "%s | OtelShin",
+  },
   description:
-    "Вывоз шин прямо от дома или офиса БЕСПЛАТНО. Комфортная цена.  Доступ в личный кабинет. Решаем проблему хранения ваших Шин, Колес, Дисков, Резины, Покрышек в Симферополе ",
+    "Сезонное хранение шин и колес в Симферополе от 500 ₽/мес. Бесплатный выезд и забор от подъезда. Особенно быстрый забор в Киевском районе. Детейлинг, мойка, сушка и доставка к шиномонтажу.",
   keywords:
-    "хранение шин Симферополь, сезонное хранение шин, шиномонтаж Симферополь, автосервис, OtelShin, хранение колес, хранение резины, отель шин, шинный отель, хранение колес Симферополь, хранание резины Симферополь, хранение дисков Симферополь, купить шины Симферополь, купить коелса Симферополь, купить дисски Симферополь, шиномонтаж симферополь",
+    "хранение шин Симферополь, сезонное хранение шин, отель шин Симферополь, шинный отель, хранение колес Симферополь, хранение шин Киевский район, забор шин от дома Симферополь, где хранить резину Симферополь, детейлинг шин Симферополь, хранение резины цена Симферополь, OtelShin, шиномонтаж Симферополь, москольцо хранение шин",
   authors: [{ name: "OtelShin" }],
   creator: "OtelShin",
   publisher: "OtelShin",
@@ -23,13 +27,17 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  alternates: {
+    canonical: "https://otelshin.ru",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "OtelShin - Надёжное хранение шин в Симферополе",
-    description: "Современный сервис хранения шин в Симферополе с вывозом на дом. Тарифы от 500₽/месяц",
+    title: "OtelShin — Комфортное хранение шин в Симферополе с забором от дома",
+    description:
+      "Вам не нужно таскать тяжести и пачкать салон: сами приедем, погрузим и увезем шины в сухой отель. Чистый балкон и багажник без хлопот. Тарифы от 500 ₽/мес.",
     type: "website",
     locale: "ru_RU",
     url: "https://otelshin.ru",
@@ -39,14 +47,14 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OtelShin - хранение шин в Симферополе",
+        alt: "OtelShin - сезонное хранение шин в Симферополе",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OtelShin - Надёжное хранение шин в Симферополе",
-    description: "Современный сервис хранения шин в Симферополе с вывозом на дом",
+    title: "OtelShin — Сезонное хранение шин в Симферополе",
+    description: "Бесплатный вывоз колес прямо от дома или офиса по Симферополю и Киевскому району.",
   },
   robots: {
     index: true,
@@ -66,10 +74,8 @@ export const metadata: Metadata = {
     title: "OtelShin",
   },
   verification: {
-    google: "your-google-verification-code",
-    yandex: "e239720fff026ba2",  // ← ваш код
+    yandex: "e239720fff026ba2",
   },
-    generator: 'v0.dev'
 }
 
 export const viewport: Viewport = {
@@ -104,27 +110,93 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="yandex-verification" content="8e61cae97ecde44c" />
 
-        {/* Structured Data */}
+        {/* Structured Data (Schema.org) for LocalBusiness & Automotive Service without revealing private home address */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "OtelShin",
-              description: "Надёжное хранение шин в Симферополе",
-              url: "https://www.otelshin.ru",
+              "@type": "AutoRepair",
+              name: "OtelShin — Шинный отель в Симферополе",
+              alternateName: ["Отель Шин Симферополь", "OtelShin"],
+              description:
+                "Сервис сезонного хранения и детейлинг-ухода за шинами и колесами в Симферополе с бесплатным забором от дома. Экспресс-выезд в Киевском районе.",
+              url: "https://otelshin.ru",
               telephone: "+79790662089",
+              priceRange: "500-1000 RUB",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Симферополь",
+                addressLocality: "г. Симферополь",
+                addressRegion: "Республика Крым",
                 addressCountry: "RU",
               },
-              openingHours: "Mo-Su 09:00-22:00",
-              priceRange: "500-700 RUB",
-              serviceArea: {
-                "@type": "City",
-                name: "Симферополь",
+              areaServed: [
+                {
+                  "@type": "AdministrativeArea",
+                  name: "Киевский район, г. Симферополь",
+                },
+                {
+                  "@type": "City",
+                  name: "Симферополь",
+                },
+                {
+                  "@type": "AdministrativeArea",
+                  name: "Симферопольский район",
+                },
+              ],
+              openingHours: "Mo-Su 09:00-21:00",
+              sameAs: [
+                "https://t.me/EnrikeTomas",
+                "https://wa.me/79780703665",
+                "https://max.ru",
+              ],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Услуги сезонного хранения шин",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    name: "Хранение шин R13-R16 (Стандарт)",
+                    price: "500",
+                    priceCurrency: "RUB",
+                    description: "Сезонное хранение шин до R16 в сухом климатическом помещении с бесплатным забором",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Хранение шин R17-R19 (Премиум)",
+                    price: "600",
+                    priceCurrency: "RUB",
+                    description: "Сезонное хранение шин для седанов и кроссоверов",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Хранение шин R20+ (Внедорожники)",
+                    price: "700",
+                    priceCurrency: "RUB",
+                    description: "Сезонное хранение шин больших диаметров",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Комплекс «Мойка + Сушка + Детейлинг-чернение» (R13-R16)",
+                    price: "600",
+                    priceCurrency: "RUB",
+                    description: "Профессиональная бесконтактная мойка, сушка и глубокая консервация полимерным составом",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Комплекс «Мойка + Сушка + Детейлинг-чернение» (R17-R19)",
+                    price: "800",
+                    priceCurrency: "RUB",
+                    description: "Мойка, сушка и чернение для кроссоверов",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Комплекс «Мойка + Сушка + Детейлинг-чернение» (R20+)",
+                    price: "1000",
+                    priceCurrency: "RUB",
+                    description: "Премиальный детейлинг-уход для больших внедорожников",
+                  },
+                ],
               },
             }),
           }}
@@ -160,8 +232,6 @@ export default function RootLayout({
             <img src="https://mc.yandex.ru/watch/97808515" style={{ position: 'absolute', left: '-9999px' }} alt="" />
           </div>
         </noscript>
-        {/* /Yandex.Metrika counter */}
-        
       </body>
     </html>
   )

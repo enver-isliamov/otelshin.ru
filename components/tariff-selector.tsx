@@ -15,21 +15,21 @@ export default function TariffSelector() {
 
   const plans = [
     {
-      name: "R13-R15",
+      name: "R13–R16 (Стандарт)",
       price: "500",
-      description: "Хранение с дисками: +100₽",
+      description: "Хранение с дисками: +100 ₽/мес",
       popular: false,
     },
     {
-      name: "R16-R19", 
+      name: "R17–R19 (Премиум)", 
       price: "600",
-      description: "Хранение с дисками: +100₽",
+      description: "Хранение с дисками: +100 ₽/мес",
       popular: true,
     },
     {
-      name: "R20+",
+      name: "R20+ (Внедорожники)",
       price: "700", 
-      description: "Хранение с дисками: +100₽",
+      description: "Хранение с дисками: +100 ₽/мес",
       popular: false,
     },
   ]
