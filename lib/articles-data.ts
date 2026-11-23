@@ -20,11 +20,11 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-11-20",
     author: "Эксперт OtelShin",
     readTime: "4 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
     category: "Советы жителям ЖК",
     content: `
       <h2>Проблема хранения шин в многоквартирных домах Симферополя</h2>
-      <p>Каждый сезон смены резины тысячи автовладельцев в Симферополе — особенно в густонаселенных районах (Москольцо, проспект Победы, ЖК Жигулина Роща, Крымская Роза) — сталкиваются с одним и тем же вопросом: <strong>куда деть 4 тяжелых колеса?</strong></p>
+      <p>Каждый сезон смены резины тысячи автовладельцев в Симферополе — в жилых домах и современных жилых комплексах — сталкиваются с одним и тем же вопросом: <strong>куда деть 4 тяжелых колеса?</strong></p>
 
       <h3>1. Почему балкон — худшее место для хранения резины:</h3>
       <ul>
@@ -38,11 +38,11 @@ export const articlesData: Record<string, ArticleData> = {
 
       <h3>3. Как эту проблему решает OtelShin:</h3>
       <ul>
-        <li><strong>Бесплатный забор у подъезда:</strong> Вам не нужно поднимать даже одно колесо. Специалист приедет в назначенное время прямо к вашему дому, сам погрузит и увезет комплект.</li>
+        <li><strong>Бесплатный забор из любого места:</strong> Вам не нужно поднимать даже одно колесо. Специалист приедет в назначенное время прямо к вашему подъезду, офису или шиномонтажу, сам погрузит и увезет комплект.</li>
         <li><strong>Правильный климат-контроль:</strong> Температура +10...+20°C, отсутствие солнца, вентиляция и хранение на специализированных стеллажах.</li>
         <li><strong>Чистота и порядок:</strong> Ваш балкон свободен, дома свежий воздух, а багажник машины чист.</li>
       </ul>
-      <p>Стоимость хранения в OtelShin начинается всего от <strong>500 рублей в месяц</strong> — это дешевле, чем чистка салона автомобиля от дорожной грязи.</p>
+      <p>Стоимость хранения в OtelShin начинается всего от <strong>500 рублей в месяц</strong> — это дешевле, чем химчистка салона автомобиля от дорожной грязи.</p>
     `,
   },
   "shinnyj-servis-dlya-devushek-simferopol": {
@@ -53,7 +53,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-11-18",
     author: "Команда OtelShin",
     readTime: "3 мин",
-    image: "https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80",
     category: "Для автоледи",
     content: `
       <h2>Сезонная переобувка без стресса для автоледи</h2>
@@ -62,7 +62,7 @@ export const articlesData: Record<string, ArticleData> = {
       <h3>Как выглядит переобувка по-новому:</h3>
       <ol>
         <li><strong>Вы просто оставляете заявку:</strong> На сайте, в Telegram, WhatsApp или MAX.</li>
-        <li><strong>Курьер сам забирает колеса:</strong> Мы приезжаем прямо к вашему подъезду в Симферополе. Специалист сам бережно погрузит шины в нашу машину. Вы даже не дотрагиваетесь до колес!</li>
+        <li><strong>Курьер сам забирает колеса:</strong> Мы приезжаем прямо к вашему подъезду, офису или в шиномонтаж. Специалист сам бережно погрузит шины в нашу машину. Вы даже не дотрагиваетесь до колес!</li>
         <li><strong>Мойка и детейлинг:</strong> Перед закладкой в отель мы помоем шины, высушим и нанесем специальный полимерный чернитель. Резина будет выглядеть как новенькая из салона.</li>
         <li><strong>Когда придет новый сезон:</strong> Мы привезем ваши чистые колеса в плотных пакетах прямо к назначенному времени в любой шиномонтаж города за 500 ₽, либо запишем вас к нашим партнерам.</li>
       </ol>
@@ -72,23 +72,23 @@ export const articlesData: Record<string, ArticleData> = {
   },
   "sezonnoe-hranenie-shin-kievskij-rajon-simferopol": {
     slug: "sezonnoe-hranenie-shin-kievskij-rajon-simferopol",
-    title: "Особенности сезонного хранения шин в Киевском районе Симферополя",
-    description: "Быстрый вывоз и хранение шин в Киевском районе Симферополя: Москольцо, пр. Победы, Кечкеметская, Марьино, ЖК Жигулина Роща и Крымская Роза.",
-    excerpt: "Экспресс-забор колес от 30 минут в Киевском районе Симферополя. Разбираем логистику, новостройки и преимущества мобильного шинного отеля.",
+    title: "Экспресс-забор и сезонное хранение шин по всему Симферополю",
+    description: "Быстрый вывоз и хранение шин по всему Симферополю: от подъезда, офиса или шиномонтажа от 30 минут. Разбираем логистику и преимущества мобильного шинного отеля.",
+    excerpt: "Экспресс-забор колес от 30 минут в любой точке Симферополя. Разбираем логистику, новостройки и преимущества мобильного шинного отеля.",
     date: "2024-11-15",
     author: "Эксперт OtelShin",
     readTime: "3 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80",
     category: "Локации Симферополя",
     content: `
-      <h2>Почему Киевский район — ключевая зона сервиса OtelShin</h2>
-      <p>Киевский район — самый крупный, развивающийся и динамичный район Симферополя. Здесь сосредоточены как классические микрорайоны (Москольцо, улица Киевская, проспект Победы, Кечкеметская, Марьино), так и современные крупные жилые комплексы (ЖК Крымская Роза, Таврический, клеверная развязка Жигулиной Рощи).</p>
+      <h2>Мобильный шинный сервис по всему Симферополю</h2>
+      <p>Симферополь — динамичный город, где каждая минута на счету. В период сезонного шиномонтажа стоять в пробках с забитым тяжелыми колесами багажником — сомнительное удовольствие.</p>
 
-      <h3>Преимущества для жителей Киевского района:</h3>
+      <h3>Преимущества выездного сервиса OtelShin:</h3>
       <ul>
-        <li><strong>Подача машины от 30 минут:</strong> Наш специалист курсирует по району и может забрать ваши шины прямо сегодня в удобное вечернее или утреннее время.</li>
-        <li><strong>Решение для жителей новостроек:</strong> В современных ЖК подземные паркинги часто запрещают складирование горючих резиновых изделий по правилам пожарной безопасности, а балконы созданы для отдыха.</li>
-        <li><strong>Связка с популярными шиномонтажами:</strong> Мы отлично знаем все шиномонтажные мастерские вдоль проспекта Победы, улицы Глинки и объездной дороги, и оперативно доставим колеса прямо к вашему мастеру.</li>
+        <li><strong>Подача машины от 30 минут:</strong> Наш специалист курсирует по городу и может забрать ваши шины прямо сегодня в удобное вечернее, дневное или утреннее время.</li>
+        <li><strong>Забор из любой локации:</strong> Мы заберем шины от подъезда дома, подземного паркинга, офиса или прямо из бокса шиномонтажа после переобувки.</li>
+        <li><strong>Связка с популярными шиномонтажами:</strong> Мы оперативно доставим колеса прямо к вашему мастеру в любой район Симферополя к назначенному часу.</li>
       </ul>
     `,
   },
@@ -100,7 +100,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-11-12",
     author: "Технолог OtelShin",
     readTime: "4 мин",
-    image: "https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80",
     category: "Детейлинг шин",
     content: `
       <h2>Зачем шинам нужен детейлинг-уход перед хранением?</h2>
@@ -129,7 +129,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-11-08",
     author: "Инженер OtelShin",
     readTime: "4 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=800&q=80",
     category: "Технические стандарты",
     content: `
       <h2>Главное правило геометрии хранения шин</h2>
@@ -160,7 +160,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-11-04",
     author: "Эксперт OtelShin",
     readTime: "3 мин",
-    image: "https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
     category: "Сезонный гид",
     content: `
       <h2>Сезонный коллапс на шиномонтажах Симферополя</h2>
@@ -183,7 +183,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-01-15",
     author: "Эксперт OtelShin",
     readTime: "5 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=800&q=80",
     category: "База знаний",
     content: `
       <h2>Основные правила хранения шин</h2>
@@ -209,7 +209,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-01-10",
     author: "Эксперт OtelShin",
     readTime: "3 мин",
-    image: "https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
     category: "Сезонность Крыма",
     content: `
       <h2>Особенности климата Крыма</h2>
@@ -230,7 +230,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-01-05",
     author: "Эксперт OtelShin",
     readTime: "3 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=800&q=80",
     category: "Безопасность",
     content: `
       <h2>Когда пора менять шины?</h2>
@@ -253,7 +253,7 @@ export const articlesData: Record<string, ArticleData> = {
     date: "2024-01-05",
     author: "Эксперт OtelShin",
     readTime: "4 мин",
-    image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
     category: "О сервисе",
     content: `
       <h2>Инвестиции в долговечность резины</h2>

@@ -5,7 +5,7 @@ export default function TargetAudience() {
     {
       icon: Heart,
       title: "Девушкам и автоледи",
-      description: "Никаких тяжестей и грязных рук. Комплект шин весит 70+ кг — специалист сам аккуратно спустит, погрузит и увезет колеса прямо от вашего подъезда.",
+      description: "Никаких тяжестей и грязных рук. Комплект шин весит 70+ кг — специалист сам аккуратно погрузит и увезет колеса от вашего подъезда, офиса или шиномонтажа.",
       iconColor: "text-rose-600",
       bgColor: "bg-rose-50",
       badge: "Забота и комфорт",
@@ -13,7 +13,7 @@ export default function TargetAudience() {
     {
       icon: Building2,
       title: "Жителям многоэтажек и ЖК",
-      description: "Освободите свой балкон, кладовку и коридор от запаха резины и грязи. Сохраните чистоту, порядок и эстетику в квартире круглый год.",
+      description: "Освободите свой балкон, кладовку и коридор от химического запаха резины и грязи. Сохраните чистоту, порядок и эстетику в квартире круглый год.",
       iconColor: "text-blue-600",
       bgColor: "bg-blue-50",
       badge: "Чистый балкон",
@@ -21,7 +21,7 @@ export default function TargetAudience() {
     {
       icon: Clock,
       title: "Занятым автомобилистам",
-      description: "Не тратьте время на поездки и погрузку. Особенно быстрый забор в Киевском районе (Москольцо, пр. Победы, Кечкеметская, Марьино) за 30 минут.",
+      description: "Не тратьте время на поездки и погрузку. Быстрый выезд по Симферополю от 30 минут — заберем шины прямо с работы, паркинга или из автосервиса.",
       iconColor: "text-purple-600",
       bgColor: "bg-purple-50",
       badge: "Экономия времени",
@@ -29,12 +29,14 @@ export default function TargetAudience() {
   ]
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-12 md:py-16 bg-white w-full max-w-full overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Кому идеально подходит наш сервис</h2>
-          <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-            Мы берем на себя всю тяжелую и грязную работу, чтобы хранение колес в Симферополе приносило вам только спокойствие.
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-balance">
+            Кому идеально подходит наш сервис
+          </h2>
+          <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto text-balance">
+            Берем на себя всю тяжелую и грязную работу, чтобы хранение колес в Симферополе приносило вам только спокойствие и комфорт.
           </p>
         </div>
 

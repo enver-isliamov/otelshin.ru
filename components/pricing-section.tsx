@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Check, Sparkles, Shield, Truck, Droplets } from "lucide-react"
+import { Check, Droplets, Truck } from "lucide-react"
 import TariffModal from "@/components/tariff-modal"
 
 export default function PricingSection() {
@@ -20,8 +20,8 @@ export default function PricingSection() {
       period: "за месяц",
       description: "Легковые и компактные автомобили",
       features: [
-        "Бесплатный забор от подъезда",
-        "Киевский район — подача от 30 мин",
+        "Бесплатный забор от подъезда / офиса",
+        "Подача машины от 30 минут",
         "Официальный договор хранения",
         "Бесплатный замер остатка протектора",
         "Сухой склад с климат-контролем",
@@ -35,8 +35,8 @@ export default function PricingSection() {
       period: "за месяц",
       description: "Седаны D/E-класса и городские кроссоверы",
       features: [
-        "Бесплатный забор от подъезда",
-        "Киевский район — подача от 30 мин",
+        "Бесплатный забор от подъезда / офиса",
+        "Подача машины от 30 минут",
         "Официальный договор хранения",
         "Фотоотчет и проверка на грыжи/проколы",
         "Сухой склад с климат-контролем",
@@ -50,8 +50,8 @@ export default function PricingSection() {
       period: "за месяц",
       description: "Крупные внедорожники и тяжелые шины",
       features: [
-        "Бесплатный забор от подъезда",
-        "Киевский район — подача от 30 мин",
+        "Бесплатный забор от подъезда / офиса",
+        "Подача машины от 30 минут",
         "Официальный договор хранения",
         "Полный осмотр и фотофиксация",
         "Специальные усиленные стеллажи",
@@ -72,12 +72,14 @@ export default function PricingSection() {
 
   return (
     <>
-      <section id="pricing" className="py-12 md:py-16 bg-gray-50" data-section="pricing">
+      <section id="pricing" className="py-12 md:py-16 bg-gray-50 w-full max-w-full overflow-hidden" data-section="pricing">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Тарифы хранения шин</h2>
-            <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-              Вам не нужно носить тяжелые колеса — специалист сам приедет к вашему подъезду в Симферополе
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-balance">
+              Тарифы хранения шин
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto text-balance">
+              Вам не нужно носить тяжелые колеса — специалист сам приедет к вашему подъезду, офису или шиномонтажу
             </p>
           </div>
 
@@ -138,10 +140,10 @@ export default function PricingSection() {
                 <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
                   Сервис и забота
                 </span>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2 text-balance">
                   Дополнительные услуги и детейлинг
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600 max-w-xl mx-auto mt-1">
+                <p className="text-xs md:text-sm text-gray-600 max-w-xl mx-auto mt-1 text-balance">
                   Сдавайте шины на сезонное хранение в идеальном состоянии — возвращаем чистыми и обработанными
                 </p>
               </div>
@@ -150,10 +152,10 @@ export default function PricingSection() {
                 {/* Детейлинг-уход */}
                 <div className="bg-gradient-to-br from-blue-50/50 to-indigo-50/30 rounded-xl p-5 border border-blue-100/60">
                   <h4 className="font-bold text-gray-900 mb-3 flex items-center text-base">
-                    <Droplets className="w-5 h-5 text-blue-600 mr-2" />
+                    <Droplets className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" />
                     Комплекс «Мойка + Сушка + Чернение»
                   </h4>
-                  <p className="text-xs text-gray-600 mb-3">
+                  <p className="text-xs text-gray-600 mb-3 leading-relaxed">
                     Глубокая очистка от тормозной пыли, сушка и консервация полимерным кондиционером (защита от старения и трещин):
                   </p>
                   <ul className="space-y-2 text-sm text-gray-700">
@@ -179,15 +181,15 @@ export default function PricingSection() {
                 {/* Забор и логистика */}
                 <div className="bg-gradient-to-br from-emerald-50/50 to-teal-50/30 rounded-xl p-5 border border-emerald-100/60">
                   <h4 className="font-bold text-gray-900 mb-3 flex items-center text-base">
-                    <Truck className="w-5 h-5 text-emerald-600 mr-2" />
+                    <Truck className="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0" />
                     Забор, доставка и безопасность
                   </h4>
-                  <p className="text-xs text-gray-600 mb-3">
+                  <p className="text-xs text-gray-600 mb-3 leading-relaxed">
                     Вам не придется пачкать багажник и тратить личное время на поездки:
                   </p>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex justify-between items-center py-1 border-b border-emerald-100/50">
-                      <span>Вывоз от подъезда / дома</span>
+                      <span>Забор: дом, офис или сервис</span>
                       <span className="font-bold text-emerald-600">БЕСПЛАТНО</span>
                     </li>
                     <li className="flex justify-between items-center py-1 border-b border-emerald-100/50">
@@ -199,7 +201,7 @@ export default function PricingSection() {
                       <span className="font-bold text-emerald-600">БЕСПЛАТНО</span>
                     </li>
                     <li className="flex justify-between items-center py-1">
-                      <span>Доставка в ваш шиномонтаж</span>
+                      <span>Доставка в любой ваш шиномонтаж</span>
                       <span className="font-bold text-gray-900">500 ₽</span>
                     </li>
                   </ul>
