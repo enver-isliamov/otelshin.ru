@@ -22,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://otelshin.ru/sitemap.xml",
-    host: "https://otelshin.ru",
+    sitemap: "https://www.otelshin.ru/sitemap.xml",
+    host: "https://www.otelshin.ru",
   }
 }

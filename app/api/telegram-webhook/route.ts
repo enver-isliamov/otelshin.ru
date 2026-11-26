@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 • Отправлять уведомления менеджеру
 • Предоставлять информацию о тарифах
 
-🌐 Наш сайт: https://otelshin.ru
+🌐 Наш сайт: https://www.otelshin.ru
 📞 Телефон: +7 (979) 066-20-89
 
 Для получения помощи напишите /help
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
 • Контроль условий 24/7
 • Автоматические напоминания
 
-🌐 Оформить заявку: https://otelshin.ru
+🌐 Оформить заявку: https://www.otelshin.ru
         `,
         )
       }

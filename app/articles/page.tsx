@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   keywords:
     "статьи о шинах, хранение шин Симферополь советы, детейлинг шин, сезонная резина Крым, уход за шинами, OtelShin блог, хранение шин Киевский район",
   alternates: {
-    canonical: "https://otelshin.ru/articles",
+    canonical: "https://www.otelshin.ru/articles",
   },
 }
 

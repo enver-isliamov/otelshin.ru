@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   creator: "OtelShin",
   publisher: "OtelShin",
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://otelshin.ru/services" },
+  alternates: { canonical: "https://www.otelshin.ru/services" },
 }
 
 export default function ServicesPage() {

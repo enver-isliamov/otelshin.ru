@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Договор — OtelShin",
   description: "Договор оказания услуг хранения шин. Текст договора загружается из файла.",
   alternates: {
-    canonical: "https://otelshin.vercel.app/dogovor",
+    canonical: "https://www.otelshin.ru/dogovor",
   },
 }
 

@@ -24,13 +24,13 @@ export async function generateMetadata({ params }: { params: Promise<ArticlePara
     title: `${article.title} | OtelShin Симферополь`,
     description: article.description || article.excerpt,
     alternates: {
-      canonical: `https://otelshin.ru/articles/${article.slug}`,
+      canonical: `https://www.otelshin.ru/articles/${article.slug}`,
     },
     openGraph: {
       title: article.title,
       description: article.description,
       type: "article",
-      url: `https://otelshin.ru/articles/${article.slug}`,
+      url: `https://www.otelshin.ru/articles/${article.slug}`,
       images: [
         {
           url: article.image,
@@ -65,21 +65,21 @@ export default async function ArticlePage({ params }: { params: Promise<ArticleP
     author: {
       "@type": "Organization",
       name: "OtelShin",
-      url: "https://otelshin.ru",
+      url: "https://www.otelshin.ru",
     },
     publisher: {
       "@type": "Organization",
       name: "OtelShin",
       logo: {
         "@type": "ImageObject",
-        url: "https://otelshin.ru/placeholder-logo.png",
+        url: "https://www.otelshin.ru/placeholder-logo.png",
       },
     },
     datePublished: article.date,
     dateModified: article.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://otelshin.ru/articles/${article.slug}`,
+      "@id": `https://www.otelshin.ru/articles/${article.slug}`,
     },
   }
 

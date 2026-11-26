@@ -10,7 +10,7 @@ import MetrikaTracker from "@/components/metrika-tracker"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://otelshin.ru"),
+  metadataBase: new URL("https://www.otelshin.ru"),
   title: {
     default: "ХРАНЕНИЕ ШИН в Симферополе — OtelShin | Бесплатный забор от подъезда, офиса или шиномонтажа",
     template: "%s | OtelShin",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://otelshin.ru",
+    canonical: "https://www.otelshin.ru",
   },
   icons: {
     icon: "/favicon.ico",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       "Бесплатный вывоз колес от подъезда, офиса или шиномонтажа по всему Симферополю от 30 минут. Вам не нужно таскать тяжести и пачкать салон. Тарифы от 500 ₽/мес.",
     type: "website",
     locale: "ru_RU",
-    url: "https://otelshin.ru",
+    url: "https://www.otelshin.ru",
     siteName: "OtelShin",
     images: [
       {
@@ -121,7 +121,7 @@ export default function RootLayout({
               alternateName: ["Отель Шин Симферополь", "OtelShin"],
               description:
                 "Сервис сезонного хранения и детейлинг-ухода за шинами и колесами в Симферополе с бесплатным забором от подъезда, офиса или шиномонтажа. Экспресс-выезд от 30 минут.",
-              url: "https://otelshin.ru",
+              url: "https://www.otelshin.ru",
               telephone: "+79790662089",
               priceRange: "500-1000 RUB",
               address: {
